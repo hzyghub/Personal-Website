@@ -9,13 +9,18 @@
     <meta property="og:description" content="人机协同的另一种可能。IntentBridge — 解决人的意图如何被AI真正理解并可靠执行。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hzyghub.github.io/Personal-Website/assets/images/avatar.jpg">
+    <meta property="og:url" content="https://hzyghub.github.io/Personal-Website/">
+    <link rel="canonical" href="https://hzyghub.github.io/Personal-Website/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="黄朝阳 — IntentBridge">
+    <meta name="twitter:description" content="人机协同的另一种可能。IntentBridge — 解决人的意图如何被AI真正理解并可靠执行。">
     <meta name="view-transition" content="same-origin">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="lang-zh">
-    <a href="#hero" class="skip-link"><span class="zh">跳到主内容</span><span class="en">Skip to content</span></a>
+    <a href="#main-content" class="skip-link"><span class="zh">跳到主内容</span><span class="en">Skip to content</span></a>
 
     <!-- ========== Navigation ========== -->
     <nav class="navbar" id="navbar">
@@ -39,6 +44,8 @@
             </button>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <!-- ========== §0 Hero ========== -->
     <section id="hero" class="hero section">
@@ -119,7 +126,7 @@
                 </a>
 
                 <!-- 1.2 Tianchi -->
-                <a href="projects/tianchi-prediction.html" class="project-item reveal">
+                <div onclick="location.href='projects/tianchi-prediction.html'" tabindex="0" role="link" onkeydown="if(event.key==='Enter')location.href='projects/tianchi-prediction.html'" class="project-item reveal" style="cursor:pointer;">
                     <div>
                         <div class="project-item__header">
                             <span class="project-item__num">§ 1.2</span>
@@ -138,7 +145,7 @@
                         <span class="zh">查看 →</span>
                         <span class="en">View →</span>
                     </span>
-                </a>
+                </div>
 
                 <!-- ★ IntentBridge -->
                 <a href="intentbridge.html" class="project-item project-item--core reveal">
@@ -317,8 +324,9 @@
     </section>
 
     <!-- ========== Footer ========== -->
+    </main>
     <footer class="site-footer">
-        <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
             <div class="site-footer__copy">
                 <span class="zh">&copy; 2026 黄朝阳</span>
                 <span class="en">&copy; 2026 Zhaoyang Huang</span>

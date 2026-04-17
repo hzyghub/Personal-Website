@@ -52,6 +52,7 @@
 .navbar__link:hover { color: var(--accent); }
 .navbar__link:hover::after { width: 100%; }
 .navbar__link.active { color: var(--accent); }
+.navbar__link.active::after { width: 100%; }
 .navbar__lang {
   font-size: 0.65rem;
   border: 1px solid var(--accent);
@@ -59,7 +60,7 @@
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: background 200ms ease, color 200ms ease;
 }
 .navbar__lang:hover { background: var(--accent); color: #fff; }
 .navbar__hamburger {
@@ -74,7 +75,7 @@
   width: 20px;
   height: 2px;
   background: var(--text);
-  transition: all 300ms ease;
+  transition: transform 300ms ease, opacity 300ms ease;
 }
 .navbar__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .navbar__hamburger.open span:nth-child(2) { opacity: 0; }
@@ -93,7 +94,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid rgba(42, 157, 143, 0.3);
+  border: 2px solid rgba(var(--accent-rgb), 0.3);
   margin: 0 auto var(--sp-lg);
   object-fit: cover;
 }
@@ -140,11 +141,11 @@
 }
 .project-item:hover {
   border-color: var(--accent);
-  background: rgba(42, 157, 143, 0.02);
+  background: rgba(var(--accent-rgb), 0.02);
 }
 .project-item--core {
   border-color: var(--accent);
-  background: rgba(42, 157, 143, 0.02);
+  background: rgba(var(--accent-rgb), 0.02);
 }
 .project-item__header {
   display: flex;
@@ -190,7 +191,7 @@
 }
 .timeline__dot--accent { background: var(--accent); }
 .timeline__dot--coral { background: var(--coral); }
-.timeline__dot--active { background: var(--accent); box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2); }
+.timeline__dot--active { background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2); }
 .timeline__date { font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.1em; }
 .timeline__date--coral { color: var(--coral); font-weight: 600; }
 .timeline__date--accent { color: var(--accent); font-weight: 600; }
@@ -297,4 +298,5 @@
   .project-item { flex-direction: column; align-items: flex-start; }
   .project-item__link { margin-left: 0; margin-top: 0.5rem; }
   .metadata { flex-wrap: wrap; gap: 0.8rem; }
+  .framework-item { flex-direction: column; gap: 0.5rem; }
 }

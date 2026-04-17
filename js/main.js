@@ -1,46 +1,90 @@
 (function() {
   'use strict';
 
-  // Language toggle with persistence
+  // ── Helpers ──────────────────────────────────────────────────────────
+  // Safe localStorage wrapper — Safari private mode / iframe sandboxes
+  // can throw SecurityError or QuotaExceededError.
+  var storage = {
+    get: function(key) {
+      try { return localStorage.getItem(key); }
+      catch (e) { return null; }
+    },
+    set: function(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (e) { /* silently ignore */ }
+    }
+  };
+
+  // ── Language toggle with persistence ─────────────────────────────────
+  var LANG_KEY = 'hzy-lang';
+  var LANG_MAP = { 'zh': 'zh-CN', 'en': 'en' };
+
+  function applyLang(lang) {
+    // Use classList so we never wipe unrelated body classes (M2)
+    document.body.classList.remove('lang-zh', 'lang-en');
+    document.body.classList.add('lang-' + lang);
+    // Update <html lang> for screen readers (M6+M10)
+    document.documentElement.lang = LANG_MAP[lang] || lang;
+  }
+
   var langToggle = document.getElementById('lang-toggle');
   if (langToggle) {
-    var saved = localStorage.getItem('hzy-lang');
-    if (saved) document.body.className = 'lang-' + saved;
+    var saved = storage.get(LANG_KEY);
+    if (saved === 'zh' || saved === 'en') {
+      applyLang(saved);
+    }
 
     langToggle.addEventListener('click', function() {
       var current = document.body.classList.contains('lang-zh') ? 'zh' : 'en';
       var next = current === 'zh' ? 'en' : 'zh';
-      document.body.className = 'lang-' + next;
-      localStorage.setItem('hzy-lang', next);
+      applyLang(next);
+      storage.set(LANG_KEY, next);
     });
   }
 
-  // Navbar scroll
+  // ── Navbar scroll shadow ─────────────────────────────────────────────
   var navbar = document.getElementById('navbar');
   window.addEventListener('scroll', function() {
     navbar.classList.toggle('scrolled', window.scrollY > 0);
   }, { passive: true });
 
-  // Hamburger with aria-expanded
+  // ── Hamburger menu ───────────────────────────────────────────────────
   var hamburger = document.querySelector('.navbar__hamburger');
   var navLinks = document.querySelector('.navbar__links');
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
   if (hamburger) {
     hamburger.setAttribute('aria-expanded', 'false');
+
     hamburger.addEventListener('click', function() {
       var isOpen = this.classList.toggle('open');
       navLinks.classList.toggle('open');
       this.setAttribute('aria-expanded', String(isOpen));
     });
+
+    // Close menu when a nav link is clicked
     navLinks.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
+        closeMenu();
       });
+    });
+
+    // Close menu on click outside (L4)
+    document.addEventListener('click', function(e) {
+      if (!navLinks.classList.contains('open')) return;
+      var target = e.target;
+      if (!navLinks.contains(target) && !hamburger.contains(target)) {
+        closeMenu();
+      }
     });
   }
 
-  // Scroll spy
+  // ── Scroll spy ───────────────────────────────────────────────────────
   var sections = document.querySelectorAll('section[id]');
   var navItems = document.querySelectorAll('.navbar__link');
   window.addEventListener('scroll', function() {
@@ -55,7 +99,7 @@
     });
   }, { passive: true });
 
-  // Scroll reveal
+  // ── Scroll reveal ────────────────────────────────────────────────────
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function(entries) {
