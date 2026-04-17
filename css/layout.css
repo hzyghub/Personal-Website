@@ -92,11 +92,12 @@
 }
 .hero__avatar {
   width: 80px;
-  height: 80px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid rgba(var(--accent-rgb), 0.3);
-  margin: 0 auto var(--sp-lg);
+  margin: 1rem auto var(--sp-lg);
   object-fit: cover;
+  object-position: center 30%;
 }
 .hero__name {
   font-size: 2.2rem;
@@ -104,6 +105,27 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--sp-lg);
   line-height: 1.2;
+}
+/* Chinese name: serif, wide spacing, gradient */
+.lang-zh .hero__name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2.6rem;
+  letter-spacing: 0.25em;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* English name: thin, spaced, gradient */
+.lang-en .hero__name {
+  font-weight: 200;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .hero__text {
   max-width: 500px;
