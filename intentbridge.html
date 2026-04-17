@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntentBridge 达意 — 黄朝阳</title>
+    <meta name="description" content="IntentBridge 达意 — 人机协同的一种思想。解决人的意图如何被AI真正理解并可靠执行的根本问题。">
+    <meta property="og:title" content="IntentBridge 达意 — 黄朝阳">
+    <meta property="og:description" content="人机协同的另一种可能。IntentBridge — 解决人的意图如何被AI真正理解并可靠执行。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta name="view-transition" content="same-origin">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lang-zh">
+
+    <!-- ========== Navigation ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__logo">
+                H.Z.Y
+                <span class="tag tag--fill" style="font-size:0.4rem; padding:0.1rem 0.3rem;">v3.0</span>
+            </a>
+            <ul class="navbar__links" id="nav-links">
+                <li><a href="index.html#projects" class="navbar__link"><span class="zh">项目</span><span class="en">Projects</span></a></li>
+                <li><a href="intentbridge.html" class="navbar__link active"><span class="zh">方法论</span><span class="en">Methodology</span></a></li>
+                <li><a href="index.html#timeline" class="navbar__link"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
+                <li><a href="index.html#contact" class="navbar__link"><span class="zh">联系</span><span class="en">Contact</span></a></li>
+            </ul>
+            <button class="navbar__lang" id="lang-toggle" aria-label="Toggle language">
+                <span class="zh">EN</span>
+                <span class="en">中文</span>
+            </button>
+            <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== Page Header ========== -->
+    <section class="section" style="padding-top: calc(var(--nav-height) + var(--sp-2xl));">
+        <div class="container">
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb reveal">
+                <a href="index.html" class="breadcrumb__item">H.Z.Y</a>
+                <span class="breadcrumb__sep">/</span>
+                <span class="breadcrumb__current">
+                    <span class="zh">IntentBridge</span>
+                    <span class="en">IntentBridge</span>
+                </span>
+            </div>
+
+            <!-- Title + version -->
+            <h1 class="display reveal" style="margin-bottom: var(--sp-sm);">
+                Intent<span style="font-family: var(--font-serif); font-style: italic; color: var(--accent);">Bridge</span>
+                <span class="tag tag--fill" style="font-size:0.5rem; padding:0.15rem 0.4rem; margin-left:0.4rem; vertical-align:middle;">v0.3</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="caption reveal" style="margin-bottom: var(--sp-md);">
+                <span class="zh">达意 — 人机协同的一种思想</span>
+                <span class="en">D&aacute;y&igrave; — A philosophy of human-AI collaboration</span>
+            </p>
+
+            <!-- Metadata bar -->
+            <div class="metadata reveal">
+                <div>
+                    <div class="metadata__label">
+                        <span class="zh">状态</span>
+                        <span class="en">Status</span>
+                    </div>
+                    <div class="metadata__value">
+                        <span class="zh">持续迭代中</span>
+                        <span class="en">Continuously iterating</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="metadata__label">
+                        <span class="zh">最后更新</span>
+                        <span class="en">Last updated</span>
+                    </div>
+                    <div class="metadata__value">2026.04</div>
+                </div>
+                <div>
+                    <div class="metadata__label">
+                        <span class="zh">审查</span>
+                        <span class="en">Reviews</span>
+                    </div>
+                    <div class="metadata__value">
+                        <span class="zh">8轮已完成</span>
+                        <span class="en">8 rounds completed</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="metadata__label">
+                        <span class="zh">性质</span>
+                        <span class="en">Nature</span>
+                    </div>
+                    <div class="metadata__value">
+                        <span class="zh">原创思想</span>
+                        <span class="en">Original philosophy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="reveal" style="margin-top: var(--sp-md); max-width: 600px;">
+                <p>
+                    <span class="zh">IntentBridge 不是 Prompt Engineering 的变体，也不是某个工具或框架。它是人机协同的一种思想——核心命题是<strong>人的意图如何完整、可靠地转化为AI的执行</strong>。这个想法来源于我三年深度使用AI解决真实业务问题的过程中，反复遇到的一个痛点。</span>
+                    <span class="en">IntentBridge is not a variant of Prompt Engineering, nor is it a tool or framework. It is a philosophy of human-AI collaboration — the core proposition is <strong>how human intent can be completely and reliably translated into AI execution</strong>. This idea emerged from three years of deep AI usage solving real business problems, where I kept running into the same pain point.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== §1 问题 — It came from real pain ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label reveal">&sect; 1</div>
+            <div class="reveal">
+                <div class="section-marker">
+                    <h2 class="h1">
+                        <span class="zh">不是理论推导，是真实痛点</span>
+                        <span class="en">Not a theoretical derivation — real pain</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--sp-md); max-width: 600px;">
+                <p class="reveal">
+                    <span class="zh">2023年，我开始深度使用AI做数据分析、平台开发、产品设计。很快我发现一个反复出现的问题——每次和AI协作，结果和我的预期之间总有偏差。不是AI不够强，也不是我不会写提示词。问题出在更根本的地方。</span>
+                    <span class="en">In 2023, I started using AI intensively for data analysis, platform development, and product design. I soon noticed a recurring problem — every time I collaborated with AI, there was always a gap between the result and my expectation. It wasn't that AI wasn't powerful enough, nor that I couldn't write prompts. The problem was more fundamental.</span>
+                </p>
+
+                <!-- Highlighted quote block -->
+                <div class="quote-block reveal">
+                    <div class="quote-block__text">
+                        <span class="zh">我心里想的是<strong style="color:var(--accent);">A</strong>，告诉AI的是<strong style="color:var(--accent);">A&prime;</strong>，AI理解的是<strong style="color:var(--accent);">A&Prime;</strong>，最终执行的是<strong style="color:var(--coral);">A&prime;&Prime;&prime;</strong></span>
+                        <span class="en">What I have in mind is <strong style="color:var(--accent);">A</strong>, what I tell AI is <strong style="color:var(--accent);">A&prime;</strong>, what AI understands is <strong style="color:var(--accent);">A&Prime;</strong>, what it finally executes is <strong style="color:var(--coral);">A&prime;&Prime;&prime;</strong></span>
+                    </div>
+                    <div class="quote-block__note">
+                        <span class="zh">意图在传递过程中逐级失真——这就是"意图-执行差距"</span>
+                        <span class="en">Intent gets distorted at each step of translation — this is the "Intent-Execution Gap"</span>
+                    </div>
+                </div>
+
+                <p class="reveal">
+                    <span class="zh">这四层偏移，在简单任务里不明显。但当你用AI做复杂的事情——搭平台、写规范、做决策支持——每一层偏移都会被放大，最终结果离你的真实意图越来越远。</span>
+                    <span class="en">These four layers of drift are barely noticeable in simple tasks. But when you use AI for complex work — building platforms, writing specs, supporting decisions — each layer of drift gets amplified, and the final result drifts further and further from your true intent.</span>
+                </p>
+
+                <p class="reveal" style="margin-top: var(--sp-sm);">
+                    <span class="zh">所以这不是提示词的问题。提示词工程解决的是"怎么说"，而IntentBridge要解决的是更根本的问题——<strong>人机之间如何建立可靠的意图传递机制</strong>。</span>
+                    <span class="en">So this is not a prompt problem. Prompt engineering solves "how to say it," while IntentBridge addresses a more fundamental question — <strong>how to build a reliable intent transfer mechanism between humans and AI</strong>.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== §2 框架 — Core components ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label reveal">&sect; 2</div>
+            <div class="reveal">
+                <div class="section-marker">
+                    <h2 class="h1">
+                        <span class="zh">框架 — 核心组成部分</span>
+                        <span class="en">Framework — Core Components</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="framework-list" style="margin-top: var(--sp-md);">
+                <!-- §2.1 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.1</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">意图-执行差距模型</span>
+                            <span class="en">Intent-Execution Gap Model</span>
+                            <span class="tag tag--accent" style="margin-left:0.4rem;">
+                                <span class="zh">已审查 &check;</span>
+                                <span class="en">Reviewed &check;</span>
+                            </span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">描述人的意图在转化为AI执行的过程中，经历的四个阶段及其对应的失真机制。是整个方法论的基础模型。</span>
+                            <span class="en">Describes the four stages human intent passes through on its way to AI execution, and the distortion mechanisms at each stage. The foundational model of the entire methodology.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- §2.2 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.2</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">六维质量评估框架</span>
+                            <span class="en">Six-Dimension Quality Assessment Framework</span>
+                            <span class="tag tag--accent" style="margin-left:0.4rem;">
+                                <span class="zh">已审查 &check;</span>
+                                <span class="en">Reviewed &check;</span>
+                            </span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">从完整性、准确性、一致性、可操作性、可审查性、可演化性六个维度评估AI输出的质量。不是打分，是发现差距。</span>
+                            <span class="en">Evaluates AI output quality across six dimensions: completeness, accuracy, consistency, actionability, auditability, and evolvability. Not about scoring — about discovering gaps.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- §2.3 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.3</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">活标准双环审查</span>
+                            <span class="en">Living Standard Dual-Loop Review</span>
+                            <span class="tag tag--accent" style="margin-left:0.4rem;">
+                                <span class="zh">已审查 &check;</span>
+                                <span class="en">Reviewed &check;</span>
+                            </span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">双环机制：内环审查案例（AI输出），外环审查标准本身。标准不是固定的——它在审查实践中持续进化。本站的设计规范就是用这套方法审查的。</span>
+                            <span class="en">A dual-loop mechanism: the inner loop reviews the case (AI output), the outer loop reviews the standard itself. Standards are not fixed — they evolve through review practice. This site's design spec was reviewed using this method.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- §2.4 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.4</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">人机分工模型</span>
+                            <span class="en">Human-AI Division of Labor Model</span>
+                            <span class="tag tag--accent" style="margin-left:0.4rem;">
+                                <span class="zh">已审查 &check;</span>
+                                <span class="en">Reviewed &check;</span>
+                            </span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">明确哪些决策必须由人做，哪些可以交给AI。不是简单的"人管方向、AI管执行"——而是根据意图清晰度和后果严重性两个维度来划分。</span>
+                            <span class="en">Clarifies which decisions must be made by humans and which can be delegated to AI. Not simply "humans steer, AI executes" — but divided along two dimensions: intent clarity and consequence severity.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom note -->
+            <p class="caption reveal" style="margin-top: var(--sp-md); font-style: italic;">
+                <span class="zh">以下内容持续迭代，不代表最终形态</span>
+                <span class="en">The content above is continuously iterating and does not represent its final form</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== §3 验证 — Not just talk ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label reveal">&sect; 3</div>
+            <div class="reveal">
+                <div class="section-marker section-marker--coral">
+                    <h2 class="h1">
+                        <span class="zh">验证 — 不是空谈</span>
+                        <span class="en">Validation — Not just talk</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-top: var(--sp-md);">
+                <!-- Stat 1 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value stat-card__value--coral">40% &rarr; 95%</div>
+                    <div class="stat-card__label">
+                        <span class="zh">定向成功率提升</span>
+                        <span class="en">Targeted success rate improvement</span>
+                    </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value">10.9/12</div>
+                    <div class="stat-card__label">
+                        <span class="zh">外部AI评分（六维框架）</span>
+                        <span class="en">External AI score (Six-Dimension Framework)</span>
+                    </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value stat-card__value--coral">8<span class="zh">轮</span><span class="en"> rounds</span></div>
+                    <div class="stat-card__label">
+                        <span class="zh">活标准审查已完成</span>
+                        <span class="en">Living Standard Reviews completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="caption reveal">
+                <span class="zh">数据来源：个人在 AFC 平台开发、天池竞赛、本站设计过程中的实际协作记录。不是实验室数据，是真实工作中的积累。</span>
+                <span class="en">Data source: actual collaboration records from AFC platform development, Tianchi competitions, and this site's design process. Not lab data — accumulated from real work.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== §4 进化 — Living state ========== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label reveal">&sect; 4</div>
+            <div class="reveal">
+                <div class="section-marker section-marker--muted">
+                    <h2 class="h1">
+                        <span class="zh">进化 — 活的状态</span>
+                        <span class="en">Evolution — Living state</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="timeline" style="margin-top: var(--sp-md);">
+                <!-- v0.3 current -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot timeline__dot--active"></div>
+                    <div class="timeline__date timeline__date--accent">
+                        v0.3 &middot; 2026.04 &middot; <span class="zh">当前</span><span class="en">Current</span>
+                    </div>
+                    <div class="timeline__text">
+                        <span class="zh"><strong>框架核心确立</strong>。四个核心组件（差距模型、六维评估、双环审查、分工模型）经过8轮审查，形态基本稳定。方法论从模糊直觉进入可表述阶段。</span>
+                        <span class="en"><strong>Framework core established.</strong> Four core components (Gap Model, Six-Dimension Assessment, Dual-Loop Review, Division of Labor Model) have been through 8 review rounds and reached a stable form. The methodology moved from vague intuition to articulable structure.</span>
+                    </div>
+                </div>
+
+                <!-- v0.4 in progress -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot timeline__dot--coral"></div>
+                    <div class="timeline__date timeline__date--coral">
+                        v0.4 &middot; <span class="zh">进行中</span><span class="en">In progress</span>
+                    </div>
+                    <div class="timeline__text">
+                        <span class="zh"><strong>产品形态探索</strong>。将方法论转化为可交付的产品形态——可能是工具、服务或训练体系。正在验证哪些场景最有价值。</span>
+                        <span class="en"><strong>Product form exploration.</strong> Translating the methodology into a deliverable product form — possibly a tool, service, or training system. Validating which scenarios deliver the most value.</span>
+                    </div>
+                </div>
+
+                <!-- v1.0 planned -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__date">
+                        v1.0 &middot; <span class="zh">规划中</span><span class="en">Planned</span>
+                    </div>
+                    <div class="timeline__text">
+                        <span class="zh"><strong>完整方法论 + 产品 + 商业</strong>。目标是一个完整的体系：思想清晰表达、产品可用、商业模型可验证。</span>
+                        <span class="en"><strong>Complete methodology + product + business.</strong> The goal is a complete system: clearly articulated philosophy, usable product, and validated business model.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Footer ========== -->
+    <footer class="site-footer">
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+                <a href="index.html" style="font-size:0.75rem; color:var(--accent);">
+                    <span class="zh">&larr; 返回主页</span>
+                    <span class="en">&larr; Back to Home</span>
+                </a>
+            </div>
+            <div class="site-footer__meta">
+                <span class="site-footer__version">v0.3</span>
+                <span class="site-footer__date">2026.04</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
