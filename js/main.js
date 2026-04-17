@@ -1,13 +1,17 @@
 (function() {
   'use strict';
 
-  // Language toggle
+  // Language toggle with persistence
   var langToggle = document.getElementById('lang-toggle');
   if (langToggle) {
-    var currentLang = 'zh';
+    var saved = localStorage.getItem('hzy-lang');
+    if (saved) document.body.className = 'lang-' + saved;
+
     langToggle.addEventListener('click', function() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      document.body.className = 'lang-' + currentLang;
+      var current = document.body.classList.contains('lang-zh') ? 'zh' : 'en';
+      var next = current === 'zh' ? 'en' : 'zh';
+      document.body.className = 'lang-' + next;
+      localStorage.setItem('hzy-lang', next);
     });
   }
 
@@ -17,18 +21,21 @@
     navbar.classList.toggle('scrolled', window.scrollY > 0);
   }, { passive: true });
 
-  // Hamburger
+  // Hamburger with aria-expanded
   var hamburger = document.querySelector('.navbar__hamburger');
   var navLinks = document.querySelector('.navbar__links');
   if (hamburger) {
+    hamburger.setAttribute('aria-expanded', 'false');
     hamburger.addEventListener('click', function() {
-      this.classList.toggle('open');
+      var isOpen = this.classList.toggle('open');
       navLinks.classList.toggle('open');
+      this.setAttribute('aria-expanded', String(isOpen));
     });
     navLinks.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
         hamburger.classList.remove('open');
         navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
   }

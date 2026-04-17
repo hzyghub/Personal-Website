@@ -8,11 +8,14 @@
     <meta property="og:title" content="IntentBridge 达意 — 黄朝阳">
     <meta property="og:description" content="人机协同的另一种可能。IntentBridge — 解决人的意图如何被AI真正理解并可靠执行。">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta property="og:image" content="https://hzyghub.github.io/Personal-Website/assets/images/avatar.jpg">
     <meta name="view-transition" content="same-origin">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="lang-zh">
+    <a href="#main-content" class="skip-link"><span class="zh">跳到主内容</span><span class="en">Skip to content</span></a>
 
     <!-- ========== Navigation ========== -->
     <nav class="navbar" id="navbar">
@@ -38,7 +41,7 @@
     </nav>
 
     <!-- ========== Page Header ========== -->
-    <section class="section" style="padding-top: calc(var(--nav-height) + var(--sp-2xl));">
+    <section class="section" id="main-content" style="padding-top: calc(var(--nav-height) + var(--sp-2xl));">
         <div class="container">
 
             <!-- Breadcrumb -->
@@ -363,7 +366,7 @@
     <footer class="site-footer">
         <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
             <div>
-                <a href="index.html" style="font-size:0.75rem; color:var(--accent);">
+                <a href="index.html" class="btn btn--outline" style="font-size:0.65rem;">
                     <span class="zh">&larr; 返回主页</span>
                     <span class="en">&larr; Back to Home</span>
                 </a>
