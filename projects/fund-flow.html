@@ -128,12 +128,8 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">天池竞赛赛题——预测余额宝（天弘基金）未来每日的资金申购和赎回量。资金流受工资日、节假日、收益确认规则等多重周期叠加影响。</span>
-                <span class="en">Tianchi Competition challenge — predict daily purchase and redemption volumes for Yu'e Bao (Tianhong Fund). Fund flows are influenced by overlapping cycles: payday, holidays, yield confirmation rules.</span>
-            </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">详细背景待补充。</span>
-                <span class="en">Detailed background to be added.</span>
+                <span class="zh">蚂蚁金服拥有上亿会员，业务场景中每天涉及大量资金流入和流出。面对庞大用户群，资金管理压力巨大——既要保证流动性风险最小，又要满足日常业务运转。赛题要求通过余额宝用户的申购赎回数据，精准预测未来每日的资金流入流出情况。对货币基金而言，资金流入即申购行为，资金流出即赎回行为。</span>
+                <span class="en">Ant Financial serves over 100 million members with massive daily fund inflows and outflows. Managing liquidity at this scale demands precise forecasting — minimizing risk while sustaining daily operations. The challenge: predict daily fund flows (purchases and redemptions) for Yu'e Bao users based on historical transaction data. For money market funds, inflows represent purchases and outflows represent redemptions.</span>
             </p>
         </div>
     </section>
@@ -152,8 +148,16 @@
                 <span class="en">Built a dual-cycle factor model to separate overlapping monthly and weekly cycle effects. Combined with Prophet for trend decomposition, manually encoding business-rule features like yield confirmation delays.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">详细技术方案待补充。</span>
-                <span class="en">Detailed technical solution to be added.</span>
+                <span class="zh">双周期因子分解模型的核心思想很直观：余额宝的资金流同时受两种周期驱动——"周几效应"（工作日购买多、周末赎回多）和"几号效应"（发薪日购买高峰）。模型把预测拆成乘法结构：预测值 = 基线水平 × 周几因子 × 几号因子。两种因子独立计算，周几因子是每个星期几的平均值除以总均值，几号因子同理。这种乘法分解比加法更能捕获周期之间的交互效应。</span>
+                <span class="en">The dual-cycle factor model's core idea is intuitive: Yu'e Bao fund flows are driven by two simultaneous cycles — the "day-of-week effect" (more purchases on workdays, more redemptions on weekends) and the "day-of-month effect" (purchase peaks on salary dates). The model decomposes predictions multiplicatively: predicted = baseline × weekday_factor × day_of_month_factor. Each factor set is computed independently as the ratio of period-average to overall-mean. Multiplicative decomposition captures interaction effects between cycles better than additive models.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">最有意思的发现是"10号效应"——在184天的历史数据中，每月10号的购买因子达到1.248，也就是比月均购买量高出24.8%。这个峰值很可能与中国的薪资发放周期有关：很多企业在每月10号左右发工资，员工收到工资后立即转入余额宝。模型专门针对工作日10号增加了1.08-1.10倍的提升系数。</span>
+                <span class="en">The most intriguing discovery was the "10th Effect" — across 184 days of historical data, the purchase factor on the 10th of each month reached 1.248, meaning purchases were 24.8% above the monthly average. This peak likely correlates with China's salary payment cycle: many companies pay wages around the 10th, and employees transfer salary to Yu'e Bao immediately. The model applies a dedicated 1.08–1.10× boost for weekday 10ths.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">另一个独特的特征是"收益确认延迟编码"。余额宝的收益不是即时到账的——周一套现，周三才显示收益；周五套现，要到下周二。这套延迟规则被编码为一个整数特征（2-4天不等），加上一个布尔标记（当天是否是收益确认日）。历史数据显示，购买金额与2天前的收益率相关性高达0.75——用户确实会根据收益到账预期调整行为。</span>
+                <span class="en">Another unique feature was "yield confirmation delay encoding." Yu'e Bao earnings don't arrive instantly — Monday purchases show yield on Wednesday; Friday purchases don't show until next Tuesday. This delay rule is encoded as an integer feature (2–4 days) plus a boolean flag (is today a yield confirmation day?). Historical data shows a 0.75 correlation between purchase amounts and yield rates 2 days prior — users do adjust behavior based on when they expect yield to appear.</span>
             </p>
         </div>
     </section>
@@ -238,9 +242,24 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">反思内容待补充。</span>
-                <span class="en">Reflections to be added.</span>
+                <span class="zh">这个项目最大的体会是：工具选择要看数据特性，不能迷信推荐方案。竞赛文档明确建议使用Prophet，我也写了详细的Prophet技术文档，但实战中直接对周期模式建模（双周期因子分解）比Prophet的趋势+季节性分解更有效。原因在于余额宝的数据周期性非常强、趋势变化相对平缓——Prophet擅长的变点检测在这里反而增加了不必要的复杂度。简单模型+深入的业务理解，比复杂模型+表面的数据拟合更可靠。</span>
+                <span class="en">The biggest takeaway: tool selection should match data characteristics, not follow recommendations blindly. The competition docs explicitly suggested Prophet, and I wrote detailed Prophet technical documentation, but in practice, directly modeling cycle patterns (dual-cycle factor decomposition) outperformed Prophet's trend + seasonality decomposition. The reason: Yu'e Bao data has very strong cyclicality with relatively flat trend changes — Prophet's strength in changepoint detection added unnecessary complexity here. Simple model + deep business understanding beats complex model + superficial data fitting.</span>
             </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">"10号效应"的发现也让我意识到，时间序列竞赛中领域知识的价值被严重低估。纯粹的统计方法可以找到周期，但只有理解"发薪日"这个业务场景，才能解释为什么是10号而不是15号，才能有信心把这个因子加入模型。这个经验后来也影响了我在AFC平台开发中的思路——先理解业务，再选择工具。</span>
+                <span class="en">The "10th Effect" discovery also showed me that domain knowledge is undervalued in time series competitions. Pure statistics can find cycles, but only understanding the "salary day" business context explains why it's the 10th and not the 15th, and gives confidence to include this factor in the model. This experience later influenced my approach to the AFC platform — understand the business first, then choose the tools.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Related -->
+    <section class="section">
+        <div class="container">
+            <div class="divider reveal"></div>
+            <a href="tianchi-prediction.html" class="btn btn--outline reveal" style="margin-top: var(--sp-md);">
+                <span class="zh">← 二手车价格预测</span>
+                <span class="en">← Used Car Price Prediction</span>
+            </a>
         </div>
     </section>
 

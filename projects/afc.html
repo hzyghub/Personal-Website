@@ -131,8 +131,8 @@
                 <span class="en">Xi'an Metro handles millions of daily passenger trips, but data analysis relied on traditional reports and manual aggregation — inefficient. Leadership needed intuitive, real-time data insights for decision-making.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">详细背景待补充。</span>
-                <span class="en">Detailed background to be added.</span>
+                <span class="zh">具体来说，是西安地铁14号线机场段——10个站点、日均5.2万乘次、年客运量约1900万。数据来源分散在4个支付渠道：消费票、IC卡、JTIC卡、二维码。每个渠道的数据格式不同、字段不同，各自为政，没有统一的分析视图。更棘手的是，二维码交易占全部流水的55%，但它只有独立的进出站记录，没有直接的起讫点（OD）信息——出行轨迹需要配对算法来重建。</span>
+                <span class="en">Specifically, Xi'an Metro Line 14 airport section — 10 stations, ~52K daily rides, ~19M annual trips. Data was scattered across 4 payment channels: consumer tickets, IC cards, JTIC cards, and QR codes. Each had different formats and fields, with no unified analytical view. The bigger challenge: QR code transactions accounted for 55% of all records but only had independent entry/exit events with no origin-destination (OD) pairs — travel patterns had to be reconstructed via a pairing algorithm.</span>
             </p>
         </div>
     </section>
@@ -151,8 +151,16 @@
                 <span class="en">Built on FastAPI + React + DuckDB architecture, a data intelligence platform supporting natural language queries (Text-to-SQL), compatible with 9 major LLM providers.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">详细技术方案待补充。</span>
-                <span class="en">Detailed technical solution to be added.</span>
+                <span class="zh">数据层选用了DuckDB——一个嵌入式列式分析数据库。对于离线分析场景，它比SQLite更快（列式扫描），比PostgreSQL更轻（无需服务器），单文件部署763MB即可承载40多张表、540万条交易记录。整个ETL管道设有6个检查点，每步暂停等待人工确认数据正确性后才继续。</span>
+                <span class="en">The data layer uses DuckDB — an embedded columnar analytics database. For offline analysis, it's faster than SQLite (columnar scans) and lighter than PostgreSQL (no server needed). A single 763MB file holds 40+ tables and 5.4M transaction records. The ETL pipeline has 6 checkpoints, each pausing for manual data verification before proceeding.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">核心算法挑战是二维码OD配对。系统通过哈希用户ID关联同一人的进出站记录，再以180分钟时间窗口过滤合理行程，最终取每笔进站对应的最早出站记录。这套算法需要在2,972,298条二维码记录中找到正确的配对，目标成功率超过80%。</span>
+                <span class="en">The core algorithmic challenge was QR code OD pairing. The system links entry/exit records by hashed user IDs, filters with a 180-minute time window for reasonable trips, then selects the earliest exit for each entry. This algorithm must find correct pairs among 2,972,298 QR code records, targeting an 80%+ success rate.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">AI问答模块采用规则型Text-to-SQL，而非让LLM直接生成SQL。这是MVP阶段的务实选择——关键词匹配预设模板，保证SQL正确性、零token成本、确定性结果。9家LLM厂商通过统一的OpenAI兼容适配器接入，因为中国LLM市场的API已趋同于OpenAI协议标准。</span>
+                <span class="en">The AI Q&amp;A module uses rule-based Text-to-SQL instead of having LLMs generate SQL directly. This is a pragmatic MVP choice — keyword matching to predefined templates ensures SQL correctness, zero token cost, and deterministic results. 9 LLM providers connect through a unified OpenAI-compatible adapter, as China's LLM market has converged on the OpenAI protocol standard.</span>
             </p>
         </div>
     </section>
@@ -231,8 +239,12 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">反思内容待补充。</span>
-                <span class="en">Reflections to be added.</span>
+                <span class="zh">作为一个非专业软件工程师的地铁运营业务专家，我在13天内完成62次Git提交，独立搭建了包含8个功能模块、35个API、40多个前端组件的生产级平台。能做到这件事，关键不是编程能力，而是给AI写了一份603行的项目规格文档（CLAUDE.md）——把业务术语、数据规则、架构决策、代码规范全部写清楚，让AI每次会话都能从正确的上下文出发。</span>
+                <span class="en">As a metro operations domain expert (not a professional software engineer), I completed 62 Git commits in 13 days, solo-building a production platform with 8 modules, 35 APIs, and 40+ frontend components. The key wasn't programming skill — it was writing a 603-line project specification (CLAUDE.md) that codified business terminology, data rules, architecture decisions, and coding conventions, giving AI the right context at the start of every session.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">正是这个项目让我意识到，"给AI写规格"本身就是一门被严重低估的学问——它催生了IntentBridge方法论。当你的领域知识足够深、但编程能力有限时，规格文档的质量直接决定了AI能帮你走多远。</span>
+                <span class="en">This project made me realize that "writing specs for AI" is an underappreciated discipline in its own right — it gave birth to the IntentBridge methodology. When your domain expertise runs deep but your coding skills are limited, the quality of your specification directly determines how far AI can take you.</span>
             </p>
         </div>
     </section>

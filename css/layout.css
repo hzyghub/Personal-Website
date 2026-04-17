@@ -134,6 +134,14 @@
   line-height: 1.9;
 }
 .hero__highlight { color: var(--coral); font-weight: 600; }
+.hero__personality {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+  margin-bottom: var(--sp-sm);
+}
 .hero__subtitle {
   font-size: 0.6rem;
   letter-spacing: 0.15em;

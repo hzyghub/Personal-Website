@@ -213,8 +213,8 @@
                             </span>
                         </div>
                         <div class="framework-item__desc">
-                            <span class="zh">从完整性、准确性、一致性、可操作性、可审查性、可演化性六个维度评估AI输出的质量。不是打分，是发现差距。</span>
-                            <span class="en">Evaluates AI output quality across six dimensions: completeness, accuracy, consistency, actionability, auditability, and evolvability. Not about scoring — about discovering gaps.</span>
+                            <span class="zh">从六个维度评估AI协作规格的质量：冷启动充分性（AI能否仅凭文档独立上手）、执行成本控制（token消耗是否有效管理）、规则冲突检测（文档内是否存在矛盾规则）、时间衰减保护（过时内容是否有更新机制）、范围边界清晰度（AI能否判断什么在范围内）、内容正确性（技术事实是否经过验证）。每个维度0-2分，总分12分。不是打分——是发现差距。</span>
+                            <span class="en">Evaluates AI collaboration spec quality across six dimensions: cold start sufficiency (can AI orient itself from this doc alone?), execution cost control (is token consumption managed?), rule conflict detection (are there contradictory rules?), temporal decay protection (is there an update mechanism for stale content?), scope boundary clarity (can AI judge what's in/out of scope?), and content correctness (are technical facts verified?). Each dimension scores 0–2, total 12. Not about scoring — about discovering gaps.</span>
                         </div>
                     </div>
                 </div>
@@ -256,6 +256,21 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- §2.5 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.5</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">人类永久工作理论</span>
+                            <span class="en">Theory of Permanent Human Work</span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">无论AI能力如何进化，有四类工作永远需要人类参与：领域知识输入、真实意图发现（包括你自己尚未意识到的部分）、意图与规格之间的差距识别、最终责任承担。这不是技术限制——而是结构性特征。</span>
+                            <span class="en">No matter how AI evolves, four categories of work will always require humans: domain knowledge input, real intent discovery (including what you haven't yet realized yourself), intent-spec gap identification, and final responsibility bearing. This isn't a technical limitation — it's a structural feature.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Bottom note -->
@@ -284,8 +299,8 @@
                 <div class="stat-card reveal">
                     <div class="stat-card__value stat-card__value--coral">40% &rarr; 95%</div>
                     <div class="stat-card__label">
-                        <span class="zh">定向成功率提升</span>
-                        <span class="en">Targeted success rate improvement</span>
+                        <span class="zh">冷启动定向成功率</span>
+                        <span class="en">Cold Start Orientation Rate</span>
                     </div>
                 </div>
 
@@ -294,7 +309,7 @@
                     <div class="stat-card__value">10.9/12</div>
                     <div class="stat-card__label">
                         <span class="zh">外部AI评分（六维框架）</span>
-                        <span class="en">External AI score (Six-Dimension Framework)</span>
+                        <span class="en">External AI Score (Six-Dim Framework)</span>
                     </div>
                 </div>
 
@@ -304,6 +319,35 @@
                     <div class="stat-card__label">
                         <span class="zh">活标准审查已完成</span>
                         <span class="en">Living Standard Reviews completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid reveal" style="margin-top: var(--sp-sm);">
+                <!-- Stat 4 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value">-71%</div>
+                    <div class="stat-card__label">
+                        <span class="zh">会话启动 token 消耗</span>
+                        <span class="en">Session Startup Token Cost</span>
+                    </div>
+                </div>
+
+                <!-- Stat 5 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value stat-card__value--coral">5.3 &rarr; 10.8</div>
+                    <div class="stat-card__label">
+                        <span class="zh">六维总分提升（/12）</span>
+                        <span class="en">Six-Dim Score Improvement (/12)</span>
+                    </div>
+                </div>
+
+                <!-- Stat 6 -->
+                <div class="stat-card reveal">
+                    <div class="stat-card__value">21</div>
+                    <div class="stat-card__label">
+                        <span class="zh">审查中发现的框架盲点</span>
+                        <span class="en">Framework Blind Spots Discovered</span>
                     </div>
                 </div>
             </div>

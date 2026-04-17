@@ -30,7 +30,7 @@
 
 /* Hero entry sequence */
 .hero__avatar { animation: fadeIn 600ms var(--ease-out) 0ms both; }
-.hero__name { animation: fadeIn 600ms var(--ease-out) 300ms both; }
+.hero__name, .hero__personality { animation: fadeIn 600ms var(--ease-out) 300ms both; }
 .hero__text { animation: fadeSlideUp 600ms var(--ease-out) 700ms both; }
 .hero__subtitle, .hero .divider { animation: fadeIn 600ms var(--ease-out) 1100ms both; }
 .hero__cta { animation: fadeIn 600ms var(--ease-out) 1500ms both; }
