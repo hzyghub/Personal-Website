@@ -2,15 +2,14 @@
   'use strict';
 
   // Language toggle
-  var langBtns = document.querySelectorAll('.navbar__lang');
-  langBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var lang = this.dataset.lang;
-      document.body.className = 'lang-' + lang;
-      langBtns.forEach(function(b) { b.classList.remove('active'); });
-      this.classList.add('active');
+  var langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    var currentLang = 'zh';
+    langToggle.addEventListener('click', function() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      document.body.className = 'lang-' + currentLang;
     });
-  });
+  }
 
   // Navbar scroll
   var navbar = document.getElementById('navbar');
