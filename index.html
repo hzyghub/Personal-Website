@@ -3,361 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黄朝阳 — 数据智能 · AI协作 · 规格工程</title>
-    <meta name="description" content="黄朝阳。用数据理解世界，用AI重构产品，用规范桥接人机意图。全栈数据产品、规格工程方法论、数据竞赛实战。">
-    <meta property="og:title" content="黄朝阳 — 数据智能 · AI协作 · 规格工程">
-    <meta property="og:description" content="数据智能 · AI协作 · 规格工程">
+    <title>黄朝阳 — IntentBridge</title>
+    <meta name="description" content="黄朝阳。人机协同思想者，IntentBridge 创造者。用数据理解世界，用AI重构产品，用方法论桥接人机意图。">
+    <meta property="og:title" content="黄朝阳 — IntentBridge">
+    <meta property="og:description" content="人机协同的另一种可能。IntentBridge — 解决人的意图如何被AI真正理解并可靠执行。">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta name="view-transition" content="same-origin">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="lang-zh">
 
     <!-- ========== Navigation ========== -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#hero" class="nav-logo">H.Z.Y</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <nav class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="#hero" class="navbar__logo">
+                H.Z.Y
+                <span class="tag tag--fill" style="font-size:0.4rem; padding:0.1rem 0.3rem;">v3.0</span>
+            </a>
+            <ul class="navbar__links" id="nav-links">
+                <li><a href="#projects" class="navbar__link"><span class="zh">项目</span><span class="en">Projects</span></a></li>
+                <li><a href="intentbridge.html" class="navbar__link"><span class="zh">方法论</span><span class="en">Methodology</span></a></li>
+                <li><a href="#timeline" class="navbar__link"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
+                <li><a href="#contact" class="navbar__link"><span class="zh">联系</span><span class="en">Contact</span></a></li>
+            </ul>
+            <button class="navbar__lang" id="lang-toggle" aria-label="Toggle language">
+                <span class="zh">EN</span>
+                <span class="en">中文</span>
+            </button>
+            <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#hero" class="active"><span class="zh">首页</span><span class="en">Home</span></a></li>
-                <li><a href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a></li>
-                <li><a href="#philosophy"><span class="zh">理念</span><span class="en">Philosophy</span></a></li>
-                <li><a href="#timeline"><span class="zh">履历</span><span class="en">Timeline</span></a></li>
-                <li><a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a></li>
-            </ul>
-            <div class="lang-switcher">
-                <button class="lang-btn active" data-lang="zh">中</button>
-                <span class="lang-sep">|</span>
-                <button class="lang-btn" data-lang="en">EN</button>
-            </div>
         </div>
     </nav>
 
-    <!-- ========== Card 1: Hero ========== -->
-    <section id="hero">
-        <div class="hero-card card reveal">
-            <img src="assets/images/avatar.jpg" alt="黄朝阳头像" class="hero-avatar">
-            <h1 class="hero-name">黄朝阳</h1>
-            <span class="hero-en-name">Zhaoyang Huang</span>
-            <p class="hero-tagline">
-                <span class="zh">用数据理解世界，用AI重构产品，用规范桥接人机意图</span>
-                <span class="en">Decode the world with data, rebuild products with AI, bridge human-AI intent with specs</span>
-            </p>
-            <div class="hero-tags">
-                <span class="tag"><span class="zh">数据产品</span><span class="en">Data Products</span></span>
-                <span class="tag"><span class="zh">AI协作</span><span class="en">AI Collaboration</span></span>
-                <span class="tag"><span class="zh">规格工程</span><span class="en">Spec Engineering</span></span>
-                <span class="tag"><span class="zh">全栈开发</span><span class="en">Full-Stack Dev</span></span>
-                <span class="tag">INTP</span>
-            </div>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">
-                    <span class="zh">了解我的工作</span><span class="en">Explore My Work</span>
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <span class="zh">聊聊合作</span><span class="en">Let's Collaborate</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== Card 2+3: About + Skills ========== -->
-    <section class="section" style="background: var(--bg-alt);">
+    <!-- ========== §0 Hero ========== -->
+    <section id="hero" class="hero section">
         <div class="container">
-            <div class="dual-grid">
-                <!-- Card 2: About -->
-                <div class="card reveal">
-                    <h2 class="card-title"><span class="zh">关于我</span><span class="en">About Me</span></h2>
-                    <p class="about-text">
-                        <span class="zh">作为一个典型的 INTP，我天生对复杂系统充满好奇——喜欢拆解问题、寻找隐藏模式、在混乱中建立秩序。这种性格让我在 AI 时代找到了自己的定位：不是单纯地使用 AI，而是学会与 AI 协作，让技术真正服务于业务目标。累计与 Claude Code 交互超过 20 亿 Tokens，在实践中逐渐形成了自己对人机协作的独特理解。</span>
-                        <span class="en">As a typical INTP, I'm naturally curious about complex systems — I love deconstructing problems, finding hidden patterns, and building order from chaos. This personality helped me find my place in the AI era: not just using AI, but learning to collaborate with it, making technology truly serve business goals. I've accumulated over 2 billion tokens of interaction with Claude Code, gradually forming my own unique understanding of human-AI collaboration.</span>
-                    </p>
-                    <p class="about-text">
-                        <span class="zh">从地铁数据库运维到全栈数据平台开发，从数据竞赛的模型调优到方法论体系的抽象提炼——这些看似不同的经历，其实指向同一个发现：真正决定AI协作质量的不是工具能力，而是你能不能把自己的真实意图准确传达给AI。这个发现催生了 IntentBridge 达意。</span>
-                        <span class="en">From metro database administration to full-stack data platform development, from model tuning in data competitions to abstracting methodology systems — these seemingly different experiences all point to the same discovery: what truly determines AI collaboration quality is not tool capability, but whether you can accurately communicate your real intent to AI. This discovery gave birth to IntentBridge.</span>
-                    </p>
-                    <p class="about-footer">
-                        <span class="zh">INTP —— 用分析拆解复杂，用创新重构产品，用规范桥接意图</span>
-                        <span class="en">INTP — deconstructing complexity with analysis, rebuilding products with innovation, bridging intent with specs</span>
-                    </p>
-                </div>
-                <!-- Card 3: Skills -->
-                <div class="card reveal">
-                    <h2 class="card-title"><span class="zh">技能</span><span class="en">Skills</span></h2>
-                    <div class="skills-groups">
-                        <div>
-                            <div class="skill-row-label"><span class="zh">数据</span><span class="en">Data</span></div>
-                            <div class="skill-tags">
-                                <span class="tag">Pandas</span>
-                                <span class="tag">NumPy</span>
-                                <span class="tag">DuckDB</span>
-                                <span class="tag">SQL</span>
-                                <span class="tag">ECharts</span>
-                                <span class="tag">Recharts</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="skill-row-label"><span class="zh">AI / ML</span><span class="en">AI / ML</span></div>
-                            <div class="skill-tags">
-                                <span class="tag">Claude Code</span>
-                                <span class="tag">XGBoost</span>
-                                <span class="tag">LightGBM</span>
-                                <span class="tag">Prophet</span>
-                                <span class="tag"><span class="zh">多LLM集成</span><span class="en">Multi-LLM Integration</span></span>
-                                <span class="tag"><span class="zh">特征工程</span><span class="en">Feature Engineering</span></span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="skill-row-label"><span class="zh">开发</span><span class="en">Dev</span></div>
-                            <div class="skill-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">React</span>
-                                <span class="tag">TypeScript</span>
-                                <span class="tag">Ant Design</span>
-                                <span class="tag">Vite</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="skill-row-label"><span class="zh">产品</span><span class="en">Product</span></div>
-                            <div class="skill-tags">
-                                <span class="tag"><span class="zh">需求分析</span><span class="en">Requirements</span></span>
-                                <span class="tag"><span class="zh">数据建模</span><span class="en">Data Modeling</span></span>
-                                <span class="tag"><span class="zh">ETL设计</span><span class="en">ETL Design</span></span>
-                                <span class="tag"><span class="zh">文档规范</span><span class="en">Documentation</span></span>
-                                <span class="tag"><span class="zh">用户研究</span><span class="en">User Research</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <img src="assets/images/avatar.jpg" alt="黄朝阳头像" class="hero__avatar reveal" width="80" height="80">
+            <h1 class="hero__name reveal">
+                <span class="zh">黄朝阳</span>
+                <span class="en">Zhaoyang Huang</span>
+            </h1>
+            <div class="hero__text reveal">
+                <p>
+                    <span class="zh">所有人都在研究怎么让AI更强大。但有一个问题被忽视了——<em class="hero__highlight">人的想法，AI真的理解了吗？</em></span>
+                    <span class="en">Everyone is figuring out how to make AI more powerful. But one question keeps getting ignored — <em class="hero__highlight">Does AI actually understand what you mean?</em></span>
+                </p>
+                <p>
+                    <span class="zh">我花了三年时间，在运营数据和AI的深度协作中，找到了一种回答这个问题的方式。</span>
+                    <span class="en">Over three years of deep human-AI collaboration, working with real operational data, I found a way to answer that question.</span>
+                </p>
+                <p>
+                    <span class="zh"><strong>这是 IntentBridge · 人机协同的另一种可能</strong></span>
+                    <span class="en"><strong>This is IntentBridge — a different vision for human-AI collaboration</strong></span>
+                </p>
+            </div>
+            <div class="divider reveal"></div>
+            <p class="hero__subtitle reveal">
+                <span class="zh">方法论创造者 · 数据产品实践者 · 人机协同探索者</span>
+                <span class="en">Methodology Creator · Data Product Practitioner · Human-AI Collaboration Explorer</span>
+            </p>
+            <div class="hero__cta reveal">
+                <a href="intentbridge.html" class="btn btn--primary">
+                    <span class="zh">了解 IntentBridge</span>
+                    <span class="en">Explore IntentBridge</span>
+                </a>
+                <a href="#contact" class="btn btn--outline">
+                    <span class="zh">聊聊合作</span>
+                    <span class="en">Let's Talk</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ========== Card 4: AFC Platform ========== -->
+    <!-- ========== §1 Projects ========== -->
     <section id="projects" class="section">
         <div class="container">
-            <div class="card project-full reveal">
-                <div class="project-header">
-                    <div class="project-info">
-                        <h3><span class="zh">AFC数据智能分析平台</span><span class="en">AFC Data Intelligence Platform</span></h3>
-                        <p class="project-sub"><span class="zh">西安地铁14号线机场段客流数据智能分析系统</span><span class="en">Xi'an Metro Line 14 Airport Section Passenger Flow Analysis System</span></p>
-                        <div class="project-tags">
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">React</span>
-                            <span class="tag">DuckDB</span>
-                            <span class="tag">Text-to-SQL</span>
-                            <span class="tag"><span class="zh">多LLM适配</span><span class="en">Multi-LLM Adapter</span></span>
+            <div class="section-label reveal">§ 1</div>
+            <h2 class="h1 reveal">
+                <span class="zh">我的实践</span>
+                <span class="en">My Work</span>
+            </h2>
+            <p class="caption reveal" style="margin-top: var(--sp-sm); margin-bottom: var(--sp-lg);">
+                <span class="zh">想法需要落地才算数。这些是我做过的事。</span>
+                <span class="en">Ideas only count when they're built. Here's what I've done.</span>
+            </p>
+            <div class="project-list">
+                <!-- 1.1 AFC -->
+                <a href="projects/afc.html" class="project-item reveal">
+                    <div>
+                        <div class="project-item__header">
+                            <span class="project-item__num">§ 1.1</span>
+                            <span class="project-item__title">
+                                <span class="zh">AFC 数据智能平台</span>
+                                <span class="en">AFC Data Intelligence Platform</span>
+                            </span>
+                            <span class="tag tag--accent">
+                                <span class="zh">生产级</span>
+                                <span class="en">Production</span>
+                            </span>
                         </div>
-                        <p class="project-desc">
-                            <span class="zh">西安地铁14号线日均6.27万笔交易来自四种格式各异的支付渠道（AFC、二维码、长安通、交通联合卡），长期无法统一分析，运营决策依赖经验判断。我设计了"离线导出→三阶段脱敏→DuckDB列式分析"的架构——选DuckDB而非PostgreSQL，因为列式存储在聚合查询上快5-10倍且零运维；解决最难的工程问题是二维码OD配对（二维码即时扣费无进出站关联，需通过脱敏用户hash+交易类型配对，成功率>80%）。前端采用演进式原子化架构（39个Widget独立自包含），AI模块通过工厂模式适配9家LLM厂商的OpenAI兼容接口，SSE流式响应实现逐字输出。MVP已用于领导汇报，推动运营管理从经验判断向数据驱动转型。</span>
-                            <span class="en">Xi'an Metro Line 14 generates 62.7K daily transactions across four payment channels (AFC, QR code, Chang'antong, transit card), each with different schemas, making unified analysis impossible. I designed an "offline export → 3-stage anonymization → DuckDB columnar analysis" architecture — choosing DuckDB over PostgreSQL for 5-10x faster aggregation queries with zero ops overhead. The hardest engineering challenge was QR code OD pairing (instant payment has no entry-exit link; I paired records via anonymized user hash + trade type with >80% success rate). The frontend uses an evolutionary atomic architecture (39 self-contained Widgets), and the AI module adapts 9 LLM providers via factory pattern with SSE streaming. MVP has been used in executive briefings, driving the shift from experience-based to data-driven operations.</span>
+                        <p class="project-item__desc">
+                            <span class="zh">一个人+AI，为西安地铁搭建了生产级客流数据智能分析平台。已用于领导汇报。</span>
+                            <span class="en">Solo + AI, built a production-grade passenger flow data intelligence platform for Xi'an Metro. Already used in executive reporting.</span>
                         </p>
-                        <div class="project-highlights">
-                            <span class="tag tag-coral"><span class="zh">Claude Code 250h+ / 20亿 Tokens</span><span class="en">Claude Code 250h+ / 2B Tokens</span></span>
-                            <span class="tag tag-coral"><span class="zh">四来源统一入仓</span><span class="en">4-Source Unified ETL</span></span>
-                            <span class="tag tag-coral"><span class="zh">MVP已用于领导汇报</span><span class="en">MVP Used in Exec Briefings</span></span>
-                        </div>
                     </div>
-                    <div class="project-stats">
-                        <div class="stat">
-                            <span class="stat-num">8</span>
-                            <span class="stat-label"><span class="zh">分析模块</span><span class="en">Modules</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">35</span>
-                            <span class="stat-label"><span class="zh">API端点</span><span class="en">API Endpoints</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">40+</span>
-                            <span class="stat-label"><span class="zh">UI组件</span><span class="en">UI Components</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">9</span>
-                            <span class="stat-label"><span class="zh">LLM供应商</span><span class="en">LLM Providers</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <span class="project-item__link">
+                        <span class="zh">查看 →</span>
+                        <span class="en">View →</span>
+                    </span>
+                </a>
 
-            <!-- ========== Card 5+6: Two Small Projects ========== -->
-            <div class="project-grid">
-                <div class="card project-card reveal">
-                    <h3><span class="zh">二手车价格预测</span><span class="en">Used Car Price Prediction</span></h3>
-                    <p class="project-sub"><span class="zh">阿里天池竞赛</span><span class="en">Alibaba Tianchi Competition</span></p>
-                    <div class="project-tags">
-                        <span class="tag">XGBoost</span>
-                        <span class="tag">LightGBM</span>
-                        <span class="tag"><span class="zh">特征工程</span><span class="en">Feature Eng.</span></span>
-                        <span class="tag"><span class="zh">模型融合</span><span class="en">Model Fusion</span></span>
+                <!-- 1.2 Tianchi -->
+                <a href="projects/tianchi-prediction.html" class="project-item reveal">
+                    <div>
+                        <div class="project-item__header">
+                            <span class="project-item__num">§ 1.2</span>
+                            <span class="project-item__title">
+                                <span class="zh">天池数据竞赛</span>
+                                <span class="en">Tianchi Data Competitions</span>
+                            </span>
+                            <span class="tag tag--coral">Top 1%</span>
+                        </div>
+                        <p class="project-item__desc">
+                            <span class="zh">二手车价格预测排名 Top 1%（205/33,814）+ 余额宝资金流预测。靠特征工程的直觉。</span>
+                            <span class="en">Used car price prediction ranked Top 1% (205/33,814) + Yu'e Bao fund flow prediction. Powered by feature engineering intuition.</span>
+                        </p>
                     </div>
-                    <div class="metric-block">
-                        <span class="metric-val">Top 1% <span class="zh">（205 / 33,814）</span><span class="en">(205 / 33,814)</span></span>
-                        <span class="metric-note">MAE 486<span class="zh">，从650优化，降幅25.2%</span><span class="en">, optimized from 650, 25.2% reduction</span></span>
+                    <span class="project-item__link">
+                        <span class="zh">查看 →</span>
+                        <span class="en">View →</span>
+                    </span>
+                </a>
+
+                <!-- ★ IntentBridge -->
+                <a href="intentbridge.html" class="project-item project-item--core reveal">
+                    <div>
+                        <div class="project-item__header">
+                            <span class="project-item__num">★</span>
+                            <span class="project-item__title">IntentBridge <span class="zh">达意</span><span class="en">IntentBridge</span></span>
+                            <span class="tag tag--fill">
+                                <span class="zh">方法论</span>
+                                <span class="en">Methodology</span>
+                            </span>
+                            <span class="tag tag--coral">
+                                <span class="zh">核心</span>
+                                <span class="en">Core</span>
+                            </span>
+                        </div>
+                        <p class="project-item__desc">
+                            <span class="zh">核心项目。人机协同思想——解决人的意图如何被AI真正理解并可靠执行的根本问题。持续迭代中。</span>
+                            <span class="en">Core project. A human-AI collaboration philosophy — solving the fundamental problem of how human intent can be truly understood and reliably executed by AI. Continuously iterating.</span>
+                        </p>
                     </div>
-                    <p class="project-desc">
-                        <span class="zh">核心挑战在于15个匿名特征含义不明且极易过拟合（初期验证集MAE~600，提交后飙至6000+）。我构建了六层特征工程管线：对核心数值做多重数学变换（对数/平方根/多项式/排名），从注册日期深度挖掘车龄和周期性编码，对v系列匿名特征做聚合统计与内部交叉，构造功率×车龄×里程的三维交互，用贝叶斯平滑目标编码防止类别特征过拟合。从163个候选中通过4种方法（F检验+互信息+随机森林重要性+Lasso）加权融合评分精选60个。最终5模型集成（XGBoost×3 + LightGBM×2，不同深度和正则化确保多样性），用scipy SLSQP从10个随机初始点优化融合权重，MAE从650降至486。</span>
-                        <span class="en">The core challenge was 15 anonymous features with unclear meaning and severe overfitting risk (initial CV MAE ~600, submission score 6000+). I built a 6-layer feature engineering pipeline: multi-transform on key numerics (log/sqrt/polynomial/rank), deep car-age extraction with cyclic encoding, aggregate statistics and cross-products for anonymous v-features, 3-way interaction features (power×age×mileage), and Bayesian-smoothed target encoding. From 163 candidates, I selected 60 via 4-method fusion scoring (F-test + mutual info + RF importance + Lasso). Final 5-model ensemble (XGBoost×3 + LightGBM×2 with varied depth/regularization for diversity), weights optimized by scipy SLSQP from 10 random initial points, reducing MAE from 650 to 486.</span>
-                    </p>
-                </div>
-                <div class="card project-card reveal">
-                    <h3><span class="zh">余额宝资金流入流出预测</span><span class="en">Yu'E Bao Fund Flow Prediction</span></h3>
-                    <p class="project-sub"><span class="zh">蚂蚁金服天池竞赛</span><span class="en">Ant Financial Tianchi Competition</span></p>
-                    <div class="project-tags">
-                        <span class="tag"><span class="zh">双周期因子</span><span class="en">Dual-Cycle Factor</span></span>
-                        <span class="tag">XGBoost</span>
-                        <span class="tag">Prophet</span>
-                        <span class="tag"><span class="zh">特征工程</span><span class="en">Feature Eng.</span></span>
-                    </div>
-                    <div style="margin-bottom: 12px;">
-                        <span class="metric-val"><span class="zh">竞赛得分</span><span class="en">Score</span> 121.87</span>
-                    </div>
-                    <p class="project-desc">
-                        <span class="zh">余额宝上亿用户每日资金流动的精确预测，关乎流动性风险管理。核心创新是双周期因子乘性分解模型——将资金流中的周内模式（weekday因子）和月内模式（day因子）独立提取后做乘法组合（prediction = base_level × weekday_factor × day_factor），比传统单维度时间特征更好地捕捉周期叠加。在构建day因子时发现了"10号效应"：每月10日申购因子高达1.248（比月均高25%），与发薪日资金集中流入高度相关。此外将余额宝收益确认延迟规则（T+2至T+4天不等）显式编码为特征，发现申购与2天前收益的相关性达0.75——业务理解比算法复杂度更重要。</span>
-                        <span class="en">Precisely predicting Yu'E Bao's daily fund flows for 100M+ users, critical for liquidity risk management. The core innovation is a dual-cycle factor multiplicative decomposition model — independently extracting weekday patterns and day-of-month patterns, then combining them multiplicatively (prediction = base_level × weekday_factor × day_factor), capturing overlapping cycles better than single-dimension temporal features. While building day factors, I discovered the "10th-day effect": the 10th of each month shows a purchase factor of 1.248 (25% above monthly average), strongly correlated with payday fund inflows. I also encoded Yu'E Bao's yield confirmation delay rules (T+2 to T+4) as explicit features, finding purchase-to-2-day-prior-yield correlation of 0.75 — business understanding matters more than algorithm complexity.</span>
-                    </p>
-                </div>
+                    <span class="project-item__link">
+                        <span class="zh">查看 →</span>
+                        <span class="en">View →</span>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ========== Card 7: IntentBridge ========== -->
-    <section id="philosophy" class="section" style="background: var(--bg-alt);">
-        <div class="container">
-            <div class="card reveal">
-                <div class="intentbridge-layout">
-                    <div class="intentbridge-info">
-                        <h3>IntentBridge <span class="zh">达意</span></h3>
-                        <p class="project-sub"><span class="zh">规格工程方法论 — 让AI从"猜你想做什么"变成"知道你要做什么"</span><span class="en">Spec Engineering Methodology — Making AI go from "guessing what you want" to "knowing what you need"</span></p>
-                        <div class="project-tags">
-                            <span class="tag"><span class="zh">方法论</span><span class="en">Methodology</span></span>
-                            <span class="tag"><span class="zh">规格工程</span><span class="en">Spec Eng.</span></span>
-                            <span class="tag"><span class="zh">人机协作</span><span class="en">Human-AI Collab</span></span>
-                            <span class="tag"><span class="zh">活标准审查</span><span class="en">Living Standard Review</span></span>
-                        </div>
-                        <p class="project-desc">
-                            <span class="zh">AI只理解你明确说出的意图，不理解你真正想要的——这就是意图-执行差距。我在开发AFC平台时发现，写给AI的规范文档和写给人的完全不同：AI每次会话从零开始、不会主动追问、面对矛盾规则会随机选择。为此我提炼出规格工程方法论，定义了六维质量框架（其中"冷启动充分性"和"执行成本控制"是AI协作场景特有的维度），通过8轮活标准双环审查持续改进——用测试案例的"卡壳点"反哺标准盲点，A类卡壳修标准、B类卡壳修案例。在AFC项目CLAUDE.md上验证：冷启动定向成功率从约40%提升至约95%，token消耗降低71%，总分从5.3升至10.8（+104%）。</span>
-                            <span class="en">AI only understands what you explicitly state, not what you truly want — this is the intent-execution gap. While building the AFC platform, I discovered that specifications written for AI differ fundamentally from those for humans: AI starts each session from scratch, never asks clarifying questions, and randomly chooses between conflicting rules. I distilled a Spec Engineering methodology, defining a six-dimensional quality framework (where "cold-start sufficiency" and "execution cost control" are dimensions unique to AI collaboration), continuously improved through 8 rounds of living standard dual-loop review — using test case "sticking points" to feed back into standard blindspots. Validated on the AFC project's CLAUDE.md: cold-start directional accuracy rose from ~40% to ~95%, token consumption dropped 71%, and quality score improved from 5.3 to 10.8 (+104%).</span>
-                        </p>
-                        <div class="project-highlights">
-                            <span class="tag tag-coral"><span class="zh">8轮活标准审查</span><span class="en">8 Review Rounds</span></span>
-                            <span class="tag tag-coral"><span class="zh">外部AI评分 10.9/12</span><span class="en">External AI Score 10.9/12</span></span>
-                            <span class="tag tag-coral"><span class="zh">定向成功率 40%→95%</span><span class="en">Accuracy 40%→95%</span></span>
-                        </div>
-                    </div>
-                    <div class="project-stats intentbridge-stats">
-                        <div class="stat">
-                            <span class="stat-num">6</span>
-                            <span class="stat-label"><span class="zh">维评价框架</span><span class="en">-Dim Framework</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">8</span>
-                            <span class="stat-label"><span class="zh">轮活标准审查</span><span class="en">Review Rounds</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">29</span>
-                            <span class="stat-label"><span class="zh">盲点修复</span><span class="en">Blindspots Fixed</span></span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-num">10.9</span>
-                            <span class="stat-label"><span class="zh">外部AI评分 /12</span><span class="en">External AI Score /12</span></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Philosophy Concepts -->
-                <div class="intentbridge-concepts">
-                    <h4>
-                        <span class="zh">AI协作理念</span><span class="en">AI Collaboration Philosophy</span>
-                    </h4>
-                    <div class="intentbridge-concepts-grid">
-                        <div class="concept-item">
-                            <div class="concept-num">01</div>
-                            <h5><span class="zh">意图-执行差距</span><span class="en">Intent-Execution Gap</span></h5>
-                            <p><span class="zh">AI不知道你想要但没说出口的偏好、组织约束和领域直觉。每次会话从零开始，只能靠猜测填补信息缺口。</span><span class="en">AI doesn't know your unspoken preferences, organizational constraints, or domain intuition. Each session starts from scratch, filling gaps with guesses.</span></p>
-                        </div>
-                        <div class="concept-item">
-                            <div class="concept-num">02</div>
-                            <h5><span class="zh">规格工程</span><span class="en">Spec Engineering</span></h5>
-                            <p><span class="zh">两层文档体系缺一不可：协作规格告诉AI"怎么干"（员工手册），知识规格告诉AI"依据什么判断"（业务培训教材）。规格的机械写作AI能做，不可替代的是人类确认"是否捕捉了我的真实意图"。</span><span class="en">Two layers, both essential: collaboration specs tell AI "how to work" (employee handbook), knowledge specs tell AI "what to base judgments on" (training materials). AI can mechanically write specs; the irreplaceable human role is confirming "does this capture my true intent?"</span></p>
-                        </div>
-                        <div class="concept-item">
-                            <div class="concept-num">03</div>
-                            <h5><span class="zh">人机分工模型</span><span class="en">Human-AI Division of Labor</span></h5>
-                            <p><span class="zh">人类四项永久工作：领域知识输入、真实意图发现（包括自己没意识到的那部分）、意图-规格差距识别、最终责任承担。随AI增强，对话轮数减少，但"这是我真正想要的吗"的验证永远需要人。</span><span class="en">Four permanent human tasks: domain knowledge input, true intent discovery (including what you haven't realized), intent-spec gap identification, and final accountability. As AI strengthens, conversation rounds decrease, but "is this what I really want?" always requires a human.</span></p>
-                        </div>
-                        <div class="concept-item">
-                            <div class="concept-num">04</div>
-                            <h5><span class="zh">活标准双环审查</span><span class="en">Living Standard Dual-Loop Review</span></h5>
-                            <p><span class="zh">用测试案例的"卡壳点"反哺标准盲点。A类卡壳（打不了分）说明标准有漏洞，修标准；B类卡壳（明显扣分）说明案例有缺陷，修案例。8轮审查发现29个标准盲点全部修复。</span><span class="en">Use test case "sticking points" to reveal standard blindspots. Type-A (can't score) means the standard has gaps — fix the standard. Type-B (clear deduction) means the case is deficient — fix the case. 8 rounds found 29 standard blindspots, all fixed.</span></p>
-                        </div>
-                    </div>
-                    <blockquote class="intentbridge-quote">
-                        <span class="zh">「好的规范不是写给人类看的说明书，而是让AI能独立行动的作战手册。」</span>
-                        <span class="en">"A good spec is not a manual for humans to read, but a field guide that enables AI to act independently."</span>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== Card 8-11: Timeline ========== -->
+    <!-- ========== §2 Timeline ========== -->
     <section id="timeline" class="section">
         <div class="container">
-            <div class="timeline-grid">
-                <div class="card timeline-card reveal">
-                    <div class="timeline-date">2026</div>
-                    <h4><span class="zh">AFC数据智能分析平台</span><span class="en">AFC Data Intelligence Platform</span></h4>
-                    <p><span class="zh">用Claude Code全栈开发西安地铁客流数据分析平台，MVP已用于领导汇报</span><span class="en">Full-stack development of Xi'an Metro passenger flow data analysis platform using Claude Code, MVP used in executive presentations</span></p>
+            <div class="section-label reveal">§ 2</div>
+            <h2 class="h1 reveal">
+                <span class="zh">我走过的路</span>
+                <span class="en">The Path I've Walked</span>
+            </h2>
+            <div class="timeline" style="margin-top: var(--sp-lg);">
+                <!-- 2013-2017 -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__date">2013 — 2017</div>
+                    <div class="timeline__text">
+                        <span class="zh">长安大学，自动化专业。对科技和数学的敏感，从这里开始。</span>
+                        <span class="en">Chang'an University, Automation major. Where my sensitivity to technology and math began.</span>
+                    </div>
                 </div>
-                <div class="card timeline-card reveal">
-<div class="timeline-date">2025 — <span class="zh">至今</span><span class="en">Present</span></div>
-                    <h4>IntentBridge <span class="zh">达意</span></h4>
-                    <p><span class="zh">提炼规格工程方法论，完成6轮活标准审查，外部评分10.9/12</span><span class="en">Distilled Spec Engineering methodology, completed 6 rounds of living standard review, external score 10.9/12</span></p>
+
+                <!-- 2018-2026 -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot timeline__dot--accent"></div>
+                    <div class="timeline__date timeline__date--accent">2018 — 2026</div>
+                    <div class="timeline__text">
+                        <span class="zh">西安地铁，8年一线运营数据。这里培养了我的数据直觉和解决真实问题的能力。</span>
+                        <span class="en">Xi'an Metro, 8 years of frontline operational data. This is where my data intuition came from.</span>
+                    </div>
                 </div>
-                <div class="card timeline-card reveal">
-                    <div class="timeline-date">2025</div>
-                    <h4><span class="zh">天池数据竞赛</span><span class="en">Tianchi Data Competitions</span></h4>
-                    <p><span class="zh">参与阿里天池二手车价格预测、蚂蚁金服资金流入流出预测竞赛</span><span class="en">Participated in Alibaba Tianchi Used Car Price Prediction and Ant Financial Fund Flow Prediction competitions</span></p>
+
+                <!-- 2023 early -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot timeline__dot--coral"></div>
+                    <div class="timeline__date timeline__date--coral">
+                        <span class="zh">2023 初</span>
+                        <span class="en">Early 2023</span>
+                    </div>
+                    <div class="timeline__text">
+                        <span class="zh">遇到 ChatGPT。一切都变了。开始自学AI——课程、YouTube、B站，所有能找到的渠道。第一次有了创业的冲动。</span>
+                        <span class="en">Encountered ChatGPT. Everything changed. Started self-learning AI — courses, YouTube, Bilibili, every channel I could find. First entrepreneurial spark.</span>
+                    </div>
                 </div>
-                <div class="card timeline-card reveal">
-                    <div class="timeline-date">2024 — 2026</div>
-                    <h4><span class="zh">数据智能能力体系构建</span><span class="en">Data Intelligence Competency Building</span></h4>
-                    <p><span class="zh">系统学习AI/ML技术、数据产品方法论，构建"数据+AI+规范"复合能力</span><span class="en">Systematically studied AI/ML technologies and data product methodology, built "Data + AI + Specs" composite capabilities</span></p>
+
+                <!-- 2025 -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot"></div>
+                    <div class="timeline__date">2025</div>
+                    <div class="timeline__text">
+                        <span class="zh">天池竞赛验证数据能力。开始与AI深度协作，发现人机沟通的核心痛点。</span>
+                        <span class="en">Data competitions validated my skills. Deep AI collaboration revealed the core pain point of human-AI communication.</span>
+                    </div>
                 </div>
-                <div class="card timeline-card reveal">
-                    <div class="timeline-date">2018 — 2026</div>
-                    <h4><span class="zh">西安地铁运营</span><span class="en">Xi'an Metro Operations</span></h4>
-                    <p><span class="zh">西安地铁DBA，负责AFC系统数据管理与日常分析，从一线数据工作中积累了完整的业务理解</span><span class="en">Xi'an Metro DBA, managing AFC system data and daily analysis, building comprehensive business understanding from front-line data work</span></p>
-                </div>
-                <div class="card timeline-card reveal">
-                    <div class="timeline-date">2013 — 2017</div>
-                    <h4><span class="zh">长安大学</span><span class="en">Chang'an University</span></h4>
-                    <p><span class="zh">本科学历</span><span class="en">Bachelor's Degree</span></p>
+
+                <!-- Now -->
+                <div class="timeline__item reveal">
+                    <div class="timeline__dot timeline__dot--active"></div>
+                    <div class="timeline__date timeline__date--accent">
+                        <span class="zh">现在</span>
+                        <span class="en">Now</span>
+                    </div>
+                    <div class="timeline__text">
+                        <span class="zh">创造 IntentBridge。还在进化。方法论、产品、商业——一步步成型。</span>
+                        <span class="en">Creating IntentBridge. Still evolving. Methodology, product, business — taking shape step by step.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== Card 12: Contact ========== -->
-    <section id="contact" class="section" style="background: var(--bg-alt);">
+    <!-- ========== §3 Contact ========== -->
+    <section id="contact" class="section">
         <div class="container">
-            <div class="card contact-card-wrap reveal">
-                <a href="mailto:hzymicro@outlook.com" class="contact-email">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-                    hzymicro@outlook.com
-                </a>
-                <p class="contact-cta">
-                    <span class="zh">无论是岗位机会、项目合作还是方法论交流，都欢迎联系</span>
-                    <span class="en">Whether it's a role, a project collaboration, or a discussion about methodology — I'd love to hear from you</span>
+            <div class="contact">
+                <h2 class="contact__title reveal">
+                    <span class="zh">想聊聊？</span>
+                    <span class="en">Want to Chat?</span>
+                </h2>
+                <p class="contact__desc reveal">
+                    <span class="zh">方法论交流、项目合作、创业想法——都欢迎。</span>
+                    <span class="en">Methodology discussions, project collaboration, startup ideas — all welcome.</span>
                 </p>
+                <div class="contact__emails reveal">
+                    <a href="mailto:hzymicro@outlook.com" class="contact__email">hzymicro@outlook.com</a>
+                    <a href="mailto:huangzhaoyang1994@gmail.com" class="contact__email">huangzhaoyang1994@gmail.com</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ========== Footer ========== -->
-    <footer class="footer">
-        <p>&copy; 2026 <span class="zh">黄朝阳</span><span class="en">Zhaoyang Huang</span></p>
+    <footer class="site-footer">
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+            <div class="site-footer__copy">
+                <span class="zh">&copy; 2026 黄朝阳</span>
+                <span class="en">&copy; 2026 Zhaoyang Huang</span>
+            </div>
+            <div class="site-footer__meta">
+                <span class="site-footer__version">v3.0</span>
+                <span class="site-footer__date">2026.04</span>
+            </div>
+        </div>
     </footer>
 
     <script src="js/main.js"></script>
