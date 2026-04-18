@@ -128,10 +128,16 @@
                 <span class="en">Background</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
+            <p class="caption reveal">
+                <span class="zh">做完二手车预测之后，我想看看自己能不能处理时间序列问题——金融数据的周期性和业务规则比二手车复杂得多。蚂蚁金服资金流预测赛题刚好合适。</span>
+                <span class="en">After the used car prediction, I wanted to test whether I could handle time series problems — financial data's cyclicality and business rules are far more complex than used car pricing. The Ant Financial fund flow prediction challenge was a perfect fit.</span>
+            </p>
             <p class="caption reveal">
                 <span class="zh">蚂蚁金服拥有上亿会员，业务场景中每天涉及大量资金流入和流出。面对庞大用户群，资金管理压力巨大——既要保证流动性风险最小，又要满足日常业务运转。赛题要求通过余额宝用户的申购赎回数据，精准预测未来每日的资金流入流出情况。对货币基金而言，资金流入即申购行为，资金流出即赎回行为。</span>
                 <span class="en">Ant Financial serves over 100 million members with massive daily fund inflows and outflows. Managing liquidity at this scale demands precise forecasting — minimizing risk while sustaining daily operations. The challenge: predict daily fund flows (purchases and redemptions) for Yu'e Bao users based on historical transaction data. For money market funds, inflows represent purchases and outflows represent redemptions.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -144,18 +150,20 @@
                 <span class="en">Solution</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
             <p class="caption reveal">
                 <span class="zh">主模型用 XGBoost + LightGBM 集成，基于验证集 MAE 动态分配权重。特征工程构建了 51 维特征，覆盖三类数据源：用户行为（日申购赎回汇总）、SHIBOR 银行间拆借利率、余额宝万份收益和七日年化收益率。日历特征用三角函数编码周期性，并交叉了星期×月份、星期×日期等交互项。</span>
                 <span class="en">The main model used an XGBoost + LightGBM ensemble with dynamic weight allocation based on validation MAE. Feature engineering built 51 dimensions covering three data sources: user behavior (daily aggregated purchases and redemptions), SHIBOR interbank rates, and Yu'e Bao yield rates. Calendar features used trigonometric encoding for cyclicality, with interaction terms like weekday × month and weekday × day-of-month.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">资金流的周末效应很明确：周六周日的申购和赎回金额大约只有工作日的 60%。数据中还观察到每月 10 号前后的购买量偏高，可能和发薪日有关。这些周期模式是特征工程的重点——周一到周四的工作日强度各不相同，周五就开始下滑，不能用一个"是否工作日"的布尔值概括。</span>
                 <span class="en">Weekend effects in fund flows were clear: Saturday and Sunday purchase/redemption amounts were roughly 60% of weekday levels. The data also showed elevated purchase volumes around the 10th of each month, likely tied to salary payment dates. These cyclical patterns drove the feature engineering focus — each weekday from Monday to Thursday had distinct intensity levels, with Friday already declining, so a single "is_weekday" boolean couldn't capture this nuance.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">最有价值的特征是收益确认延迟编码。余额宝的收益不是即时到账：周一转入，周三才显示收益；周五转入，要到下周二。按照赛题给出的规则，我把每天对应的延迟天数（2-4天）编码为整数特征，再标记当天是否是收益确认日。历史数据显示购买金额与 2 天前的收益率相关性达到 0.75——用户确实会根据预期收益调整申购行为。</span>
                 <span class="en">The most valuable feature was yield confirmation delay encoding. Yu'e Bao earnings don't appear instantly: Monday deposits show yield on Wednesday; Friday deposits don't show until next Tuesday. Following the competition's rules, I encoded each day's delay (2–4 days) as an integer feature, plus a boolean flag for whether it's a yield confirmation day. Historical data showed a 0.75 correlation between purchase amounts and yield rates 2 days prior — users do adjust purchasing based on expected yield.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -238,14 +246,16 @@
                 <span class="en">Reflections</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
             <p class="caption reveal">
                 <span class="zh">这个项目最直接的体会是：数据源的广度比模型的复杂度更重要。试过好几种模型架构——双周期因子分解、Prophet 趋势分解、多模型加权集成——但拉开分差的关键不是选哪个模型，而是特征工程用了多少数据源。只用用户行为数据的模型拿了 107 分，加上 SHIBOR 利率和余额宝收益率后直接跳到 114 分。51 维特征里，收益确认延迟这类业务规则编码虽然不起眼，却是真正拉开差距的地方。</span>
                 <span class="en">The most direct lesson: data source breadth matters more than model complexity. I tried several architectures — dual-cycle factor decomposition, Prophet trend decomposition, multi-model weighted ensembles — but the key differentiator wasn't which model I chose, it was how many data sources the feature engineering incorporated. The model using only user behavior data scored 107; adding SHIBOR rates and Yu'e Bao yield data pushed it to 114. Among the 51 features, business-rule encodings like yield confirmation delay were unremarkable but genuinely differentiating.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">另一个实际感受是周末效应的精度很重要。粗略地给周末乘一个折扣系数（比如 0.7）能拿到基础分，但工作日里周一到周五的强度各不相同，周五已经明显下滑，用三角函数编码这种连续变化比硬分界线效果好。竞赛文档建议用 Prophet，我也试了，但这个场景下余额宝数据的趋势变化平缓、周期性极强，树模型 + 手工特征反而更合适。</span>
                 <span class="en">Another practical takeaway: weekend effect precision matters. Roughly discounting weekends (e.g., ×0.7) gets baseline scores, but each weekday has distinct intensity — Friday already declines noticeably. Trigonometric encoding of these continuous changes outperforms hard boundaries. The competition docs recommended Prophet, and I tried it, but in this scenario with flat trends and extreme cyclicality, tree models + hand-crafted features were more effective.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -276,6 +286,9 @@
         </div>
     </footer>
 
+    <button class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
     <script src="../js/main.js"></script>
 </body>
 </html>

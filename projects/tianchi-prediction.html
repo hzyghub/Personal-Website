@@ -122,10 +122,16 @@
                 <span class="en">Background</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
+            <p class="caption reveal">
+                <span class="zh">我想验证自己用AI做数据分析到底行不行。天池竞赛是一个公平的考场——有明确的赛题、公开的排名、3万多支队伍同台竞技。选了二手车价格预测这个赛题，因为回归问题最能体现特征工程的功力。</span>
+                <span class="en">I wanted to verify whether my AI-driven data analysis skills were genuinely good enough. Tianchi competitions offer a fair testing ground — clear problem statements, public rankings, and over 30,000 teams competing. I chose used car price prediction because regression problems best showcase feature engineering skills.</span>
+            </p>
             <p class="caption reveal">
                 <span class="zh">阿里天池大数据竞赛——二手车价格预测赛题。数据来自某交易平台二手车交易记录，总数据量超过 40 万条，包含 31 列变量信息，其中 15 列为匿名变量。训练集 15 万条，测试集各 5 万条。这是一个典型的回归问题，要求根据品牌、车龄、里程等多维特征预测交易价格。33,814 支队伍参赛。</span>
                 <span class="en">Alibaba Tianchi Big Data Competition — Used Car Price Prediction. Data sourced from a trading platform's used car records: 400k+ entries, 31 feature columns (15 anonymized). 150k training samples, 50k each for test sets A and B. A classic regression problem — predict transaction price from brand, age, mileage, and other features. 33,814 teams participated.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -138,22 +144,24 @@
                 <span class="en">Solution</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
             <p class="caption reveal">
                 <span class="zh">用 XGBoost 和 LightGBM 做多模型集成，重心放在特征工程上。没有堆叠复杂模型架构，靠对二手车市场的理解构造关键特征。</span>
                 <span class="en">Multi-model ensemble with XGBoost and LightGBM, with the core focus on feature engineering. No complex model stacking — relied on understanding the used car market to construct key features.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">策略是"先扩展、后筛选"——先把 31 个原始特征扩展到 163 个候选特征，再用多方法融合严格筛选缩减到 60 个。哪些非线性变换（对数、平方根、立方、逆函数）在哪个价位段有效，事先不知道，全部试一遍，用数据筛选。"每车龄功率"（power_per_age）反映发动机相对老化程度，"每车龄里程"（km_per_age）反映使用强度——这些特征来自对二手车定价逻辑的理解，不是纯统计变换能发现的。</span>
                 <span class="en">The strategy: "expand first, then filter" — expanding 31 raw features to 163 candidates, then rigorously filtering down to 60 via multi-method fusion. You don't know which nonlinear transformations (log, square root, cubic, inverse) work at which price range, so try them all and let data-driven selection decide. "Power per age" reflects engine quality relative to aging, "km per age" reflects usage intensity — these came from understanding used car pricing logic, not something purely statistical transformations would discover.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">特征筛选用了4种独立方法打分再加权融合：F-score（统计相关性）、互信息（信息论）、随机森林重要性（树模型视角）、Lasso系数（正则化视角）。权重分别为25%、25%、30%、20%。只靠一种方法不行——每种各有盲区。统计学方法忽略非线性交互，树模型偏向高基数特征，正则化方法对共线特征不稳定。四种方法取共识，比任何一种单独用都靠谱。</span>
                 <span class="en">Feature selection used 4 independent scoring methods with weighted fusion: F-score (statistical), mutual information (information-theoretic), random forest importance (tree-based), and Lasso coefficients (regularization). Weights: 25%, 25%, 30%, 20%. Relying on just one doesn't work — each has blind spots. Statistical methods miss nonlinear interactions, tree models favor high-cardinality features, regularization is unstable with collinear features. Four methods reaching consensus beats any single one.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">最终模型是5个XGBoost和LightGBM变体的加权集成。权重用SLSQP数学优化器在验证集上搜索全局最优——以狄利克雷分布随机初始化，运行10次取最优解，同时加入权重分散正则化来鼓励模型多样性，没用简单平均。另一个关键教训：早期用testA做验证，本地MAE只有600左右，提交后却飙到6000+——因为testA测试集与训练集之间存在数据泄漏，验证分数虚高，完全不反映真实水平。换成testB做验证后才看到真实表现，并一路优化到486。数据泄漏最坑的地方：它让分数变好，让你在虚假的信号上自信地做优化。</span>
                 <span class="en">The final model is a weighted ensemble of 5 XGBoost and LightGBM variants. Weights are mathematically optimized via SLSQP on the validation set — initialized with Dirichlet distribution, running 10 optimization rounds, plus a weight dispersion regularizer to encourage model diversity, no simple averaging. Another critical lesson: early validation on testA showed a local MAE around 600, but the submitted score spiked to 6000+ — testA had data leakage with the training set, inflating validation scores that didn't reflect real performance at all. Switching to testB revealed the true baseline and enabled the path to 486. The nastiest thing about data leakage: it makes your scores look better, letting you confidently optimize against a false signal.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -230,14 +238,16 @@
                 <span class="en">Reflections</span>
             </h2>
             <div class="divider reveal"></div>
+            <div class="prose">
             <p class="caption reveal">
                 <span class="zh">做完这个项目，最深的体会是：特征工程比模型架构重要。在有限的竞赛时间里，理解数据的业务含义——"每车龄功率"为什么有意义、品牌名称被脱敏后怎么用目标编码绕过——比调参和堆叠模型有效得多。MAE 从 650 优化到 486，靠的不是换更复杂的模型，是一次比一次更深入地理解数据。</span>
                 <span class="en">The biggest takeaway: feature engineering matters more than model architecture. In limited competition time, understanding the business meaning behind data — why "power per age" makes sense, how target encoding works around anonymized brand names — is far more effective than tuning and stacking models. The MAE improvement from 650 to 486 wasn't about switching to more complex models — it was about understanding the data more deeply at each iteration.</span>
             </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+            <p class="caption reveal">
                 <span class="zh">另一个教训是验证策略的重要性。早期用 testA 做验证，本地 MAE 只有 600 左右，提交后却飙到 6000+——因为 testA 与训练集之间存在数据泄漏，验证分数虚高。换成 testB 做验证后才看到真实表现，也才有了后面从 650 一路优化到 486 的路径。数据泄漏最坑的地方在于：它让分数变好，让你在虚假的信号上自信地做优化，直到提交才发现方向全错了。</span>
                 <span class="en">Another lesson: validation strategy matters. Early validation on testA showed a local MAE around 600, but the submitted score spiked to 6000+ — testA had data leakage with the training set, inflating validation scores. Switching to testB revealed the true baseline and enabled the path from 650 to 486. The nastiest thing about data leakage: it makes your scores look better, letting you confidently optimize against a false signal, only to discover the direction was wrong upon submission.</span>
             </p>
+            </div>
         </div>
     </section>
 
@@ -268,6 +278,9 @@
         </div>
     </footer>
 
+    <button class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
     <script src="../js/main.js"></script>
 </body>
 </html>

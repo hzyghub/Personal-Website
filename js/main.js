@@ -99,6 +99,17 @@
     });
   }, { passive: true });
 
+  // ── Back to top button ────────────────────────────────────────────────
+  var backToTop = document.querySelector('.back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+    }, { passive: true });
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // ── Scroll reveal ────────────────────────────────────────────────────
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
