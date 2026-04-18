@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFC 数据智能平台 — 黄朝阳</title>
-    <meta name="description" content="AFC数据智能平台：一个人+AI，为西安地铁14号线搭建的客流数据智能分析平台。MVP已验证，已用于领导汇报。">
+    <meta name="description" content="数据分析+AI智能体平台：在地铁成熟的AFC/ACC数据基础设施之上，搭建智能分析层，目标是Level 4自主推理智能体。MVP已验证。">
     <meta property="og:title" content="AFC 数据智能平台 — 黄朝阳">
-    <meta property="og:description" content="一个人+AI，为西安地铁14号线搭建了客流数据智能分析平台。MVP已验证，已用于领导汇报。">
+    <meta property="og:description" content="数据分析+AI智能体平台：在地铁成熟的AFC/ACC数据基础设施之上，搭建智能分析层，目标是Level 4自主推理智能体。MVP已验证。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hzyghub.github.io/Personal-Website/assets/images/avatar.jpg">
     <meta property="og:url" content="https://hzyghub.github.io/Personal-Website/projects/afc.html">
@@ -30,7 +30,7 @@
             </a>
             <ul class="navbar__links" id="nav-links">
                 <li><a href="../index.html#projects" class="navbar__link"><span class="zh">项目</span><span class="en">Projects</span></a></li>
-                <li><a href="../intentbridge.html" class="navbar__link"><span class="zh">方法论</span><span class="en">Methodology</span></a></li>
+                <li><a href="../intentbridge.html" class="navbar__link"><span class="zh">达意</span><span class="en">IntentBridge</span></a></li>
                 <li><a href="../index.html#timeline" class="navbar__link"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
                 <li><a href="../index.html#contact" class="navbar__link"><span class="zh">联系</span><span class="en">Contact</span></a></li>
             </ul>
@@ -69,8 +69,8 @@
                 <span class="en">AFC Data Intelligence Platform</span>
             </h1>
             <p class="caption reveal" style="margin-top: var(--sp-xs); margin-bottom: var(--sp-md);">
-                <span class="zh">一个人 + AI，为西安地铁14号线搭建的客流数据智能分析平台（MVP 已验证）</span>
-                <span class="en">Solo + AI, built a passenger flow data intelligence platform for Xi'an Metro Line 14 (MVP verified)</span>
+                <span class="zh">数据分析 + AI 智能体平台 —— 不是传统SaaS看板，是向Level 4自主推理演进的智能分析系统（MVP 已验证）</span>
+                <span class="en">Data Analysis + AI Agent Platform — not a traditional SaaS dashboard, but an intelligent analysis system evolving toward Level 4 autonomous reasoning (MVP verified)</span>
             </p>
 
             <!-- Tags -->
@@ -127,12 +127,12 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">西安地铁日均百万级客流，但数据分析依赖传统报表和人工汇总，效率低下。领导层需要直观、实时的数据洞察来做决策。</span>
-                <span class="en">Xi'an Metro handles millions of daily passenger trips, but data analysis relied on traditional reports and manual aggregation — inefficient. Leadership needed intuitive, real-time data insights for decision-making.</span>
+                <span class="zh">地铁是典型的数据生产企业——AFC售检票系统、ACC清算系统、设备监控系统每天自动产生海量结构化数据，数据采集基础设施已经成熟。但数据只是沉睡在数据库里，无人问津。业务人员不会写SQL，只能靠导出Excel做浅层汇总，客流模式、设备关联、异常预警这些深层价值无人挖掘。缺的不是数据，是一个能让不懂技术的人用自然语言查询数据、让数据主动服务业务决策的智能分析层。</span>
+                <span class="en">Metro is a classic data-producing industry — AFC ticketing systems, ACC clearing systems, and equipment monitoring systems automatically generate massive structured data daily. The data collection infrastructure is mature. But the data just sits dormant in databases, untouched. Business staff can't write SQL — they can only export Excel for shallow summaries, while deep-value insights like passenger flow patterns, equipment correlations, and anomaly warnings go unmined. What's missing isn't data; it's an intelligent analysis layer that lets non-technical people query data in natural language and makes data actively serve business decisions.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">具体来说，是西安地铁14号线机场段——10个站点、日均5.2万乘次、年客运量约1900万。数据来源分散在4个支付渠道：消费票、IC卡、JTIC卡、二维码。每个渠道的数据格式不同、字段不同，各自为政，没有统一的分析视图。更棘手的是，二维码交易占全部流水的55%，但它只有独立的进出站记录，没有直接的起讫点（OD）信息——出行轨迹需要配对算法来重建。</span>
-                <span class="en">Specifically, Xi'an Metro Line 14 airport section — 10 stations, ~52K daily rides, ~19M annual trips. Data was scattered across 4 payment channels: consumer tickets, IC cards, JTIC cards, and QR codes. Each had different formats and fields, with no unified analytical view. The bigger challenge: QR code transactions accounted for 55% of all records but only had independent entry/exit events with no origin-destination (OD) pairs — travel patterns had to be reconstructed via a pairing algorithm.</span>
+                <span class="zh">具体来说，是西安地铁14号线机场段——10个站点、日均5.2万乘次、年客运量约1900万。四个交易来源（AFC系统交易、二维码、长安通、交通部一卡通）各自有独立的数据库和字段格式，没有统一的分析视图。其中二维码占一半以上，长安通和交通部一卡通各占约两成和一成多，单程票不到2%。更棘手的是，二维码交易占全部流水的55%，但它只有独立的进出站记录，没有直接的起讫点（OD）信息——出行轨迹需要配对算法来重建。这些数据本来就在那里，只是没有被理解。</span>
+                <span class="en">Specifically, Xi'an Metro Line 14 airport section — 10 stations, ~52K daily rides, ~19M annual trips. Four transaction sources (AFC system transactions, QR codes, Chang'an Tong cards, national transit cards) each had their own databases and field formats, with no unified analytical view. QR codes accounted for over half, Chang'an Tong and national transit cards roughly 20% and 10%+ respectively, single-use tickets under 2%. The bigger challenge: QR code transactions accounted for 55% of all records but only had independent entry/exit events with no origin-destination (OD) pairs — travel patterns had to be reconstructed via a pairing algorithm. The data was already there; it just wasn't being understood.</span>
             </p>
         </div>
     </section>
@@ -147,8 +147,8 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">基于 FastAPI + React + DuckDB 架构，构建了支持自然语言查询（Text-to-SQL）的数据智能平台，适配 9 个主流 LLM 厂商。</span>
-                <span class="en">Built on FastAPI + React + DuckDB architecture, a data intelligence platform supporting natural language queries (Text-to-SQL), compatible with 9 major LLM providers.</span>
+                <span class="zh">方案不是再建一套SaaS系统，而是在已有的AFC/ACC数据基础设施之上，搭建一个智能分析层。技术架构是 FastAPI + React + DuckDB，支持自然语言查询（Text-to-SQL），适配 9 个主流 LLM 厂商。</span>
+                <span class="en">The solution wasn't to build another SaaS system, but to create an intelligent analysis layer on top of the existing AFC/ACC data infrastructure. Built on FastAPI + React + DuckDB, supporting natural language queries (Text-to-SQL), compatible with 9 major LLM providers.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
                 <span class="zh">数据层选用了DuckDB——一个嵌入式列式分析数据库。对于离线分析场景，它比SQLite更快（列式扫描），比PostgreSQL更轻（无需服务器），单文件即可承载40多张表、540万条交易记录。整个ETL管道设有6个检查点，每步暂停等待人工确认数据正确性后才继续。</span>
@@ -159,8 +159,20 @@
                 <span class="en">The core algorithmic challenge was QR code OD pairing. The system links entry/exit records by hashed user IDs, filters with a 180-minute time window for reasonable trips, then selects the earliest exit for each entry. This algorithm must find correct pairs among 2,972,298 QR code records, targeting an 80%+ success rate.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">AI问答模块采用规则型Text-to-SQL，而非让LLM直接生成SQL。这是MVP阶段的务实选择——关键词匹配预设模板，保证SQL正确性、零token成本、确定性结果。9家LLM厂商通过统一的OpenAI兼容适配器接入，因为中国LLM市场的API已趋同于OpenAI协议标准。</span>
-                <span class="en">The AI Q&amp;A module uses rule-based Text-to-SQL instead of having LLMs generate SQL directly. This is a pragmatic MVP choice — keyword matching to predefined templates ensures SQL correctness, zero token cost, and deterministic results. 9 LLM providers connect through a unified OpenAI-compatible adapter, as China's LLM market has converged on the OpenAI protocol standard.</span>
+                <span class="zh">AI问答模块采用规则型Text-to-SQL，而非让LLM直接生成SQL。这是MVP阶段的务实选择——关键词匹配预设模板，保证SQL正确性、零token成本、确定性结果。9家LLM厂商通过统一的OpenAI兼容适配器接入，因为中国LLM市场的API已趋同于OpenAI协议标准。但Text-to-SQL只是起点——平台的终极目标是Level 4级智能体：能跨表关联客流、设备、故障、维护数据，自动执行多步分析，给出综合结论和运营建议。</span>
+                <span class="en">The AI Q&amp;A module uses rule-based Text-to-SQL instead of having LLMs generate SQL directly. This is a pragmatic MVP choice — keyword matching to predefined templates ensures SQL correctness, zero token cost, and deterministic results. 9 LLM providers connect through a unified OpenAI-compatible adapter, as China's LLM market has converged on the OpenAI protocol standard. But Text-to-SQL is just the starting point — the platform's ultimate goal is a Level 4 agent: capable of cross-referencing passenger flow, equipment, fault, and maintenance data, automatically executing multi-step analysis, and delivering comprehensive conclusions with operational recommendations.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">MVP包含8个功能模块：OD分析（弦图、Sankey流程图、站点排名）、时段热力图（站点×小时矩阵、峰值检测）、设备负载分析（闸机/售票机负载分级、运维建议）、换入客流分析（源站/线路/时段四维分析）、机场T5专项（航站楼间客流转移对比）、设备故障分析（85,566条真实故障记录、部件分布、严重程度分级）、ACC线网报表集成（13种官方Excel报表自动导入、断面流量和精确换乘量等新指标）、AI智能问答。</span>
+                <span class="en">The MVP includes 8 functional modules: OD analysis (chord diagrams, Sankey flow charts, station rankings), time-slot heatmaps (station × hour matrix, peak detection), equipment load analysis (gate/ticket machine load grading, maintenance recommendations), transfer-in passenger analysis (4-dimensional: source station/line/period/ticket type), Airport T5 special analysis (inter-terminal flow transfer comparison), equipment fault analysis (85,566 real fault records, component distribution, severity grading), ACC network report integration (13 official Excel report types auto-imported, adding metrics like cross-section flow and precise transfer volume), and AI Q&amp;A.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">ACC线网报表集成是Phase 4的核心成果。ACC（自动售检票清算中心）提供13种官方Excel报表，涵盖OD统计、断面流量、换乘量、出行特征等。系统自动导入后生成14张acc_*表，带来传统AFC数据无法提供的新指标——精确换乘量、平均出行距离（公里）、平均乘站数、平均出行时间（分钟）。系统还实现了ACC与AFC数据的逐站对比，差异超过5%自动标记异常。</span>
+                <span class="en">ACC network report integration was the core deliverable of Phase 4. The ACC (Automated Fare Collection Clearing House) provides 13 official Excel report types covering OD statistics, cross-section flow, transfer volume, travel characteristics, and more. Auto-import generates 14 acc_* tables, adding metrics unavailable from AFC data alone — precise transfer volume, average travel distance (km), average station count, average travel time (min). The system also cross-references ACC vs AFC data station by station, auto-flagging anomalies where discrepancies exceed 5%.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">数据安全方面，所有个人标识信息在导入前完成脱敏：卡片号码MD5加密（不可逆）、时间截断到小时（移除分钟秒）、操作员编号掩码处理（如OP1234变为OP**34）。分析环境与生产环境物理隔离，数据全程离线处理，不上传任何云服务，符合网络安全法、数据安全法和个人信息保护法的要求。</span>
+                <span class="en">For data security, all personally identifiable information is anonymized before import: card numbers are MD5-hashed (irreversible), timestamps truncated to the hour (removing minutes and seconds), operator IDs masked (e.g., OP1234 becomes OP**34). The analysis environment is physically isolated from production, with all data processed offline and never uploaded to any cloud service, complying with the Cybersecurity Law, Data Security Law, and Personal Information Protection Law.</span>
             </p>
         </div>
     </section>
@@ -209,6 +221,23 @@
                     </div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-card__value">85,566</div>
+                    <div class="stat-card__label">
+                        <span class="zh">设备故障记录</span>
+                        <span class="en">Equipment Fault Records</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value">13</div>
+                    <div class="stat-card__label">
+                        <span class="zh">ACC 报表集成</span>
+                        <span class="en">ACC Report Types</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid reveal">
+                <div class="stat-card">
                     <div class="stat-card__value">1</div>
                     <div class="stat-card__label">
                         <span class="zh">独立开发者</span>
@@ -225,6 +254,16 @@
                         <span class="en">Used in Leadership Briefing</span>
                     </div>
                 </div>
+                <div class="stat-card">
+                    <div class="stat-card__value">
+                        <span class="zh">Level 4</span>
+                        <span class="en">Level 4</span>
+                    </div>
+                    <div class="stat-card__label">
+                        <span class="zh">AI 智能体目标</span>
+                        <span class="en">AI Agent Target</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -239,12 +278,16 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">作为一个非专业软件工程师的地铁运营业务专家，我在13天内完成62次Git提交，独立搭建了包含8个功能模块、35个API、40多个前端组件的平台。能做到这件事，靠的不是编程能力——我给AI写了一份603行的项目规格文档（CLAUDE.md），把业务术语、数据规则、架构决策、代码规范全部写清楚，让AI每次会话都能从正确的上下文出发。</span>
-                <span class="en">As a metro operations domain expert (not a professional software engineer), I completed 62 Git commits in 13 days, solo-building a platform with 8 modules, 35 APIs, and 40+ frontend components. The key wasn't programming skill — it was writing a 603-line project specification (CLAUDE.md) that codified business terminology, data rules, architecture decisions, and coding conventions, giving AI the right context at the start of every session.</span>
+                <span class="zh">作为一个非专业软件工程师的地铁运营业务专家，我在13天内完成62次Git提交，独立搭建了包含8个功能模块、35个API、40多个前端组件的平台。能做到这件事，靠的不是编程能力——AI完全不懂地铁业务，不可能自己推导出"二维码为什么需要OD配对"或"AFC和ACC的数据为什么会对不上"。真正让AI能正确执行的前提，是我前期花大量时间创建的业务资料：项目立项文档、业务逻辑手册、数据导出操作规程、系统设计方案、业务术语速查手册、100多个专业术语的定义。这些领域知识加上一份603行的协作规范（CLAUDE.md），才构成了AI能正确工作的完整上下文。</span>
+                <span class="en">As a metro operations domain expert (not a professional software engineer), I completed 62 Git commits in 13 days, solo-building a platform with 8 modules, 35 APIs, and 40+ frontend components. The key wasn't programming skill — AI knows nothing about metro operations and can't deduce on its own why QR codes need OD pairing or why AFC and ACC data might not reconcile. What truly enabled AI to execute correctly was the substantial upfront work of creating domain materials: project charter, business logic manuals, data export procedures, system design documents, a business terminology reference with 100+ specialized term definitions. These domain knowledge assets, combined with a 603-line collaboration spec (CLAUDE.md), formed the complete context AI needed to work correctly.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">这个项目也让我意识到，"给AI写规格"本身就是一门值得认真对待的学问——它催生了IntentBridge方法论。当你的领域知识足够深、但编程能力有限时，规格文档的质量直接决定了AI能帮你走多远。</span>
-                <span class="en">This project also made me realize that "writing specs for AI" is a discipline worth taking seriously — it gave birth to the IntentBridge methodology. When your domain expertise runs deep but your coding skills are limited, the quality of your specification directly determines how far AI can take you.</span>
+                <span class="zh">这个经验催生了IntentBridge方法论。它包含两层：协作规格告诉AI怎么工作，知识规格告诉AI判断所需的领域依据。两层缺一不可——只有协作规格没有知识规格，AI不知道依据什么做判断；只有知识规格没有协作规格，AI不知道怎么使用这些知识。当你的领域知识足够深、但编程能力有限时，两层规格的质量直接决定了AI能帮你走多远。</span>
+                <span class="en">This experience gave birth to the IntentBridge methodology. It comprises two layers: collaboration specs tell AI how to work, and knowledge specs provide the domain basis for AI's judgments. Both are indispensable — collaboration specs without knowledge specs leave AI without a basis for judgment; knowledge specs without collaboration specs leave AI unsure how to use that knowledge. When your domain expertise runs deep but your coding skills are limited, the quality of both layers directly determines how far AI can take you.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-sm);">
+                <span class="zh">整个开发经历了5个阶段：从ETL管道和DuckDB基础设施起步，到OD分析和热力图等核心分析模块，再到换入客流和T5专项等专项扩展，然后是ACC线网报表集成，最后是AI智能问答。MVP验证了技术可行性，下一步的目标是把AI从当前的单轮问答推进到Level 4——一个能自主跨表关联、多步推理、给出综合运营建议的智能体。</span>
+                <span class="en">Development went through 5 phases: starting with the ETL pipeline and DuckDB infrastructure, then core analysis modules like OD analysis and heatmaps, specialized expansions for transfer analysis and T5, ACC network report integration, and finally AI Q&amp;A. The MVP validated technical feasibility. The next goal is evolving AI from single-turn Q&amp;A to Level 4 — an agent capable of autonomous cross-table correlation, multi-step reasoning, and comprehensive operational recommendations.</span>
             </p>
         </div>
     </section>

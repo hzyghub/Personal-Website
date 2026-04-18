@@ -31,7 +31,7 @@
             </a>
             <ul class="navbar__links" id="nav-links">
                 <li><a href="index.html#projects" class="navbar__link"><span class="zh">项目</span><span class="en">Projects</span></a></li>
-                <li><a href="intentbridge.html" class="navbar__link active"><span class="zh">方法论</span><span class="en">Methodology</span></a></li>
+                <li><a href="intentbridge.html" class="navbar__link active"><span class="zh">达意</span><span class="en">IntentBridge</span></a></li>
                 <li><a href="index.html#timeline" class="navbar__link"><span class="zh">旅程</span><span class="en">Journey</span></a></li>
                 <li><a href="index.html#contact" class="navbar__link"><span class="zh">联系</span><span class="en">Contact</span></a></li>
             </ul>
@@ -71,6 +71,10 @@
                 <span class="zh">达意 — 人机协同的一种思想</span>
                 <span class="en">D&aacute;y&igrave; — A philosophy of human-AI collaboration</span>
             </p>
+            <p class="caption reveal" style="margin-bottom: var(--sp-md); font-style: italic; opacity: 0.6;">
+                <span class="zh">辞达而已矣 —— 《论语》15.41</span>
+                <span class="en">"Language should simply convey meaning, nothing more" — Confucius, Analects 15.41</span>
+            </p>
 
             <!-- Metadata bar -->
             <div class="metadata reveal">
@@ -97,8 +101,8 @@
                         <span class="en">Reviews</span>
                     </div>
                     <div class="metadata__value">
-                        <span class="zh">8轮已完成</span>
-                        <span class="en">8 rounds completed</span>
+                        <span class="zh">9轮已完成</span>
+                        <span class="en">9 rounds completed</span>
                     </div>
                 </div>
                 <div>
@@ -130,8 +134,8 @@
             <div class="reveal">
                 <div class="section-marker">
                     <h2 class="h1">
-                        <span class="zh">不是理论推导，是真实痛点</span>
-                        <span class="en">Not a theoretical derivation — real pain</span>
+                        <span class="zh">起因 — 真实痛点</span>
+                        <span class="en">Origin — Real pain points</span>
                     </h2>
                 </div>
             </div>
@@ -174,54 +178,104 @@
             <div class="reveal">
                 <div class="section-marker">
                     <h2 class="h1">
-                        <span class="zh">框架 — 核心组成部分</span>
+                        <span class="zh">框架 — 核心组成</span>
                         <span class="en">Framework — Core Components</span>
                     </h2>
                 </div>
             </div>
 
             <div class="framework-list" style="margin-top: var(--sp-md);">
-                <!-- §2.1 -->
+                <!-- §2.1 核心架构 -->
                 <div class="framework-item reveal">
                     <div class="framework-item__num">&sect; 2.1</div>
                     <div>
                         <div class="framework-item__title">
-                            <span class="zh">意图-执行差距模型</span>
-                            <span class="en">Intent-Execution Gap Model</span>
+                            <span class="zh">核心架构：两层规格</span>
+                            <span class="en">Core Architecture: Two-Layer Specs</span>
                             <span class="tag tag--accent" style="margin-left:0.4rem;">
                                 <span class="zh">已审查 &check;</span>
                                 <span class="en">Reviewed &check;</span>
                             </span>
                         </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">AI的执行质量上限，由规格质量决定——协作规格+知识规格，缺一不可。</span>
+                            <span class="en">AI's execution quality ceiling is determined by spec quality — collaboration specs + knowledge specs, both indispensable.</span>
+                        </div>
                         <div class="framework-item__desc">
-                            <span class="zh">描述人的意图在转化为AI执行的过程中，经历的四个阶段及其对应的失真机制。是整个方法论的基础模型。</span>
-                            <span class="en">Describes the four stages human intent passes through on its way to AI execution, and the distortion mechanisms at each stage. The foundational model of the entire methodology.</span>
+                            <span class="zh">AI的执行质量上限，由你给它的规格质量决定。规格分为两层，缺一不可：<strong>协作规格</strong>告诉AI怎么工作——工作方式、边界、约束（如CLAUDE.md）；<strong>知识规格</strong>告诉AI判断所需的领域依据——术语定义、规则集、案例库。只有协作规格没有知识规格，AI不知道依据什么做判断；只有知识规格没有协作规格，AI不知道怎么使用这些知识。这个洞察来源于AFC项目的实践。</span>
+                            <span class="en">AI's execution quality ceiling is determined by the quality of specs you give it. Specs have two layers, both indispensable: <strong>collaboration specs</strong> tell AI how to work — methods, boundaries, constraints (e.g., CLAUDE.md); <strong>knowledge specs</strong> provide the domain basis for AI's judgments — terminology, rule sets, case libraries. Collaboration specs without knowledge specs leave AI without a basis for judgment; knowledge specs without collaboration specs leave AI unsure how to use that knowledge. This insight came from the AFC project.</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- §2.2 -->
+                <!-- §2.2 协作规格层 -->
                 <div class="framework-item reveal">
                     <div class="framework-item__num">&sect; 2.2</div>
                     <div>
                         <div class="framework-item__title">
-                            <span class="zh">六维质量评估框架</span>
-                            <span class="en">Six-Dimension Quality Assessment Framework</span>
+                            <span class="zh">协作规格层：六维评估 + 撰写指南</span>
+                            <span class="en">Collaboration Spec Layer: Six-Dim Assessment + Writing Guide</span>
                             <span class="tag tag--accent" style="margin-left:0.4rem;">
                                 <span class="zh">已审查 &check;</span>
                                 <span class="en">Reviewed &check;</span>
                             </span>
                         </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">六个维度评估协作规格质量（0-12分），配套撰写指南覆盖13项必填内容、7个反模式。</span>
+                            <span class="en">Six dimensions assess collaboration spec quality (0-12 points), with a complete writing guide covering 13 required items and 7 anti-patterns.</span>
+                        </div>
                         <div class="framework-item__desc">
-                            <span class="zh">从六个维度评估AI协作规格的质量：冷启动充分性（AI能否仅凭文档独立上手）、执行成本控制（token消耗是否有效管理）、规则冲突检测（文档内是否存在矛盾规则）、时间衰减保护（过时内容是否有更新机制）、范围边界清晰度（AI能否判断什么在范围内）、内容正确性（技术事实是否经过验证）。每个维度0-2分，总分12分。不是打分——是发现差距。</span>
-                            <span class="en">Evaluates AI collaboration spec quality across six dimensions: cold start sufficiency (can AI orient itself from this doc alone?), execution cost control (is token consumption managed?), rule conflict detection (are there contradictory rules?), temporal decay protection (is there an update mechanism for stale content?), scope boundary clarity (can AI judge what's in/out of scope?), and content correctness (are technical facts verified?). Each dimension scores 0–2, total 12. Not about scoring — about discovering gaps.</span>
+                            <span class="zh">六维质量评估框架从六个维度评估协作规格的质量：冷启动充分性（AI能否仅凭文档独立上手）、执行成本控制、规则冲突检测、时间衰减保护、范围边界清晰度、内容正确性。每个维度0-2分，总分12分。基于六维框架的完整撰写指南（v1.4）覆盖13项必填内容、4步撰写流程、7个反模式，已适配 Claude Code、Cursor、Copilot、Windsurf 等主流AI编程工具。</span>
+                            <span class="en">The Six-Dimension Quality Assessment Framework evaluates collaboration spec quality across: cold start sufficiency (can AI orient itself from this doc alone?), execution cost control, rule conflict detection, temporal decay protection, scope boundary clarity, and content correctness. Each dimension scores 0–2, total 12. A complete writing guide (v1.4) based on this framework covers 13 required content items, a 4-step writing process, and 7 anti-patterns, adapted for Claude Code, Cursor, Copilot, Windsurf, and other major AI coding tools.</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- §2.3 -->
+                <!-- §2.3 知识规格层 -->
                 <div class="framework-item reveal">
                     <div class="framework-item__num">&sect; 2.3</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">知识规格层：领域知识显性化</span>
+                            <span class="en">Knowledge Spec Layer: Making Domain Knowledge Explicit</span>
+                            <span class="tag tag--accent" style="margin-left:0.4rem;">
+                                <span class="zh">已审查 &check;</span>
+                                <span class="en">Reviewed &check;</span>
+                            </span>
+                        </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">面向领域专家——把你脑子里的专业判断，变成AI能理解、能使用的东西。</span>
+                            <span class="en">For domain experts — turning the professional judgment in your head into something AI can understand and use.</span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">面向领域专家（非技术人员）的方法。核心问题是：你脑子里的专业判断，怎么变成AI能用的东西？四种隐性知识提取技法——反例法（从"这是错的"反推规则）、追问法（层层追问判断依据）、对比法（找相似案例的关键差异）、边界法（找规则的例外和失效条件）。提取后的知识以四种形态整理：术语表、规则集（IF-THEN）、范例库（好案例/坏案例/边界案例）、权威来源清单。五维质量评估（完整性、准确性、无歧义性、时效性、隐性知识覆盖率，0-10分）确保知识规格达标。</span>
+                            <span class="en">A method for domain experts (non-technical). The core question: how do you turn the professional judgment in your head into something AI can use? Four tacit-knowledge extraction techniques — counter-example (infer rules from "this is wrong"), deep questioning (drill into judgment basis layer by layer), comparative (find the critical difference between similar cases), and boundary (find exceptions and failure conditions). Extracted knowledge is organized into four formats: glossary, rule sets (IF-THEN), example libraries (good/bad/boundary cases), and authoritative source lists. A five-dimension quality assessment (completeness, accuracy, ambiguity-free, timeliness, tacit-knowledge coverage, 0–10 points) ensures knowledge spec quality.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- §2.4 意图触达 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.4</div>
+                    <div>
+                        <div class="framework-item__title">
+                            <span class="zh">前置过程：意图触达</span>
+                            <span class="en">Pre-Spec Process: Intent Reaching</span>
+                        </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">规格撰写之前的前置步骤。陈述需求≠真实需求——AI主动探索帮你发现真正的意图。</span>
+                            <span class="en">The pre-spec step. Stated requirements ≠ real requirements — AI proactively explores to uncover your true intent.</span>
+                        </div>
+                        <div class="framework-item__desc">
+                            <span class="zh">规格撰写之前的前置步骤——发现真实意图。陈述需求≠真实需求：你心里想的是A，告诉AI的是A'，但A和A'之间可能有关键差距。双环模型：外环是传统模式（陈述需求→AI执行→结果，差距在执行中积累），内环是意图触达模式（AI主动探索上下文→显式化假设→人类确认→意图更新→再执行）。5个AI主动探索行为：上下文扫描、显式假设、挑战陈述、市场/行业扫描、结果探针。意图触达解决的是"规格要捕捉什么"，其他组件解决的是"怎么写"。</span>
+                            <span class="en">The pre-spec step — discovering real intent. Stated requirements ≠ real requirements: what you have in mind is A, what you tell AI is A', and there can be critical gaps between them. Dual-loop model: the outer loop is traditional (state requirement → AI executes → result, gaps accumulate during execution); the inner loop is intent-reaching mode (AI proactively explores context → makes assumptions explicit → human confirms → intent updates → then executes). Five proactive AI behaviors: context scanning, explicit assumptions, challenging statements, market/industry scanning, result probing. Intent reaching solves "what should specs capture"; other components solve "how to write them."</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- §2.5 活标准双环审查 -->
+                <div class="framework-item reveal">
+                    <div class="framework-item__num">&sect; 2.5</div>
                     <div>
                         <div class="framework-item__title">
                             <span class="zh">活标准双环审查</span>
@@ -231,16 +285,20 @@
                                 <span class="en">Reviewed &check;</span>
                             </span>
                         </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">用"卡壳点"驱动标准进化——无法评分的维度就是盲点。本站6份指南经9轮审查。</span>
+                            <span class="en">"Stuck points" drive standard evolution — dimensions you can't score reveal blind spots. This site's 6 guides went through 9 review rounds.</span>
+                        </div>
                         <div class="framework-item__desc">
-                            <span class="zh">双环机制：内环审查案例（AI输出），外环审查标准本身。标准不是固定的——它在审查实践中持续进化。本站的设计规范就是用这套方法审查的。</span>
-                            <span class="en">A dual-loop mechanism: the inner loop reviews the case (AI output), the outer loop reviews the standard itself. Standards are not fixed — they evolve through review practice. This site's design spec was reviewed using this method.</span>
+                            <span class="zh">双环机制：内环审查案例（AI输出），外环审查标准本身。用"卡壳点"驱动标准进化——在某个维度上无法评分时，说明标准有盲点。A类卡壳=标准缺失，B类卡壳=案例缺陷。本站的设计规范和IntentBridge自身的6份指南，都经过了9轮这样的审查。</span>
+                            <span class="en">A dual-loop mechanism: the inner loop reviews the case (AI output), the outer loop reviews the standard itself. "Stuck points" drive standard evolution — when you can't score on a dimension, it reveals a blind spot. A-type stuck = standard gap, B-type stuck = case defect. This site's design spec and IntentBridge's own 6 guides have all been through 9 rounds of this review.</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- §2.4 -->
+                <!-- §2.6 人机分工模型 -->
                 <div class="framework-item reveal">
-                    <div class="framework-item__num">&sect; 2.4</div>
+                    <div class="framework-item__num">&sect; 2.6</div>
                     <div>
                         <div class="framework-item__title">
                             <span class="zh">人机分工模型</span>
@@ -250,6 +308,10 @@
                                 <span class="en">Reviewed &check;</span>
                             </span>
                         </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">按意图清晰度和后果严重性划分——比"人管方向、AI管执行"精细得多。</span>
+                            <span class="en">Divided by intent clarity and consequence severity — far more nuanced than "humans steer, AI executes."</span>
+                        </div>
                         <div class="framework-item__desc">
                             <span class="zh">明确哪些决策必须由人做，哪些可以交给AI。按意图清晰度和后果严重性两个维度来划分，比简单说"人管方向、AI管执行"要精细。</span>
                             <span class="en">Clarifies which decisions must be made by humans and which can be delegated to AI. Divided along two dimensions — intent clarity and consequence severity — more nuanced than simply saying "humans steer, AI executes."</span>
@@ -257,13 +319,17 @@
                     </div>
                 </div>
 
-                <!-- §2.5 -->
+                <!-- §2.7 人类永久工作理论 -->
                 <div class="framework-item reveal">
-                    <div class="framework-item__num">&sect; 2.5</div>
+                    <div class="framework-item__num">&sect; 2.7</div>
                     <div>
                         <div class="framework-item__title">
                             <span class="zh">人类永久工作理论</span>
                             <span class="en">Theory of Permanent Human Work</span>
+                        </div>
+                        <div class="framework-item__summary">
+                            <span class="zh">无论AI如何进化，有四类工作永远需要人类参与。这是事情本身的性质决定的。</span>
+                            <span class="en">No matter how AI evolves, four categories of work will always require humans. It's the nature of the work itself.</span>
                         </div>
                         <div class="framework-item__desc">
                             <span class="zh">无论AI能力如何进化，有四类工作永远需要人类参与：领域知识输入、真实意图发现（包括你自己尚未意识到的部分）、意图与规格之间的差距识别、最终责任承担。这不是技术不够，是这件事本身的性质决定的。</span>
@@ -273,9 +339,17 @@
                 </div>
             </div>
 
+            <!-- 方法论全景图 -->
+            <div class="reveal" style="margin-top: var(--sp-lg);">
+                <p class="caption">
+                    <span class="zh"><strong>方法论覆盖范围</strong>：前置层（意图触达指南）→ 跨阶段（AI协作规范撰写指南、知识规格化指南、文档结构规范指南）→ 各开发阶段（需求/设计/开发/测试/部署）。4份指南已完成，覆盖开发生命周期的核心阶段。</span>
+                    <span class="en"><strong>Methodology coverage</strong>: Pre-phase (Intent Reaching Guide) → Cross-phase (AI Collaboration Spec Writing Guide, Knowledge Specification Guide, Document Structure Guide) → Development phases (requirements/design/dev/test/deploy). 4 guides completed, covering the core phases of the development lifecycle.</span>
+                </p>
+            </div>
+
             <!-- Bottom note -->
             <p class="caption reveal" style="margin-top: var(--sp-md); font-style: italic;">
-                <span class="zh">以下内容持续迭代，不代表最终形态</span>
+                <span class="zh">以上内容持续迭代，不代表最终形态</span>
                 <span class="en">The content above is continuously iterating and does not represent its final form</span>
             </p>
         </div>
@@ -315,7 +389,7 @@
 
                 <!-- Stat 3 -->
                 <div class="stat-card reveal">
-                    <div class="stat-card__value stat-card__value--coral">8<span class="zh">轮</span><span class="en"> rounds</span></div>
+                    <div class="stat-card__value stat-card__value--coral">9<span class="zh">轮</span><span class="en"> rounds</span></div>
                     <div class="stat-card__label">
                         <span class="zh">活标准审查已完成</span>
                         <span class="en">Living Standard Reviews completed</span>
@@ -353,21 +427,65 @@
             </div>
 
             <p class="caption reveal">
-                <span class="zh">数据来源：个人在 AFC 平台开发、天池竞赛、本站设计过程中的实际协作记录。不是实验室数据，是真实工作中的积累。</span>
+                <span class="zh">冷启动定向成功率：新AI会话中，不额外补充上下文就能正确理解任务意图的比例。10.9/12 外部评分：用独立AI实例（非编写者本人使用的AI）对协作规格进行六维度盲评。</span>
+                <span class="en">Cold start rate: percentage of new AI sessions that correctly grasp task intent without additional context. 10.9/12 external score: blind evaluation by an independent AI instance (not the author's own) across six dimensions.</span>
+            </p>
+            <p class="caption reveal" style="margin-top: var(--sp-xs);">
+                <span class="zh">数据来源：AFC 平台开发、天池竞赛、本站设计过程中的实际协作记录。不是实验室数据，是真实工作中的积累。</span>
                 <span class="en">Data source: actual collaboration records from AFC platform development, Tianchi competitions, and this site's design process. Not lab data — accumulated from real work.</span>
             </p>
+
+            <!-- 本站审查案例 -->
+            <div class="divider reveal" style="margin-top: var(--sp-lg); margin-bottom: var(--sp-md);"></div>
+            <div class="reveal">
+                <p class="caption" style="font-weight: 600;">
+                    <span class="zh">实例：本站设计规范的审查</span>
+                    <span class="en">Case study: reviewing this site's design spec</span>
+                </p>
+            </div>
+            <div class="stats-grid reveal" style="margin-top: var(--sp-sm);">
+                <div class="stat-card">
+                    <div class="stat-card__value stat-card__value--coral">11</div>
+                    <div class="stat-card__label">
+                        <span class="zh">项发现（7处标准盲点 + 4处内容缺陷）</span>
+                        <span class="en">findings (7 spec blind spots + 4 content defects)</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__value">69% &rarr; 87%</div>
+                    <div class="stat-card__label">
+                        <span class="zh">规范评分提升（11/16 → 14/16）</span>
+                        <span class="en">spec score improvement (11/16 → 14/16)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--sp-sm); max-width: 600px;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+                    <span class="zh">关键发现举例：排版层级表写的是 2.5rem，但 Hero 实际用的是 2.2rem——规范自相矛盾。配色表有 12 个色值但没说什么时候用哪个。布局参数完全缺失——导航多高？Hero 多高？</span>
+                    <span class="en">Example finding: the typography scale said 2.5rem but the Hero used 2.2rem — a contradiction. The color palette had 12 values but no usage rules. Layout parameters were completely missing.</span>
+                </p>
+                <div style="margin-top: var(--sp-sm);">
+                    <span class="tag tag--outline">
+                        <span class="zh">审查前</span>
+                        <span class="en">Pre-review</span>
+                    </span>
+                    <span style="font-size: 0.6rem; color: var(--text-dim); margin: 0 0.3rem;">→</span>
+                    <span class="tag tag--accent">
+                        <span class="zh">审查后</span>
+                        <span class="en">Post-review</span>
+                    </span>
+                </div>
+            </div>
         </div>
     </section>
-
-    <!-- ========== §4 进化 — Living state ========== -->
     <section class="section">
         <div class="container">
             <div class="section-label reveal">&sect; 4</div>
             <div class="reveal">
                 <div class="section-marker section-marker--muted">
                     <h2 class="h1">
-                        <span class="zh">进化 — 活的状态</span>
-                        <span class="en">Evolution — Living state</span>
+                        <span class="zh">进展 — 还在迭代</span>
+                        <span class="en">Progress — Still iterating</span>
                     </h2>
                 </div>
             </div>
@@ -380,8 +498,8 @@
                         v0.3 &middot; 2026.04 &middot; <span class="zh">当前</span><span class="en">Current</span>
                     </div>
                     <div class="timeline__text">
-                        <span class="zh"><strong>框架核心确立</strong>。四个核心组件（差距模型、六维评估、双环审查、分工模型）经过8轮审查，形态基本稳定。方法论从模糊直觉进入可表述阶段。</span>
-                        <span class="en"><strong>Framework core established.</strong> Four core components (Gap Model, Six-Dimension Assessment, Dual-Loop Review, Division of Labor Model) have been through 8 review rounds and reached a stable form. The methodology moved from vague intuition to articulable structure.</span>
+                        <span class="zh"><strong>框架核心确立</strong>。七个核心组件经过9轮审查，形态基本稳定。方法论从模糊直觉进入可表述阶段。4份指南（协作规范撰写、知识规格化、意图触达、文档结构）已完成。</span>
+                        <span class="en"><strong>Framework core established.</strong> Seven core components have been through 9 review rounds and reached a stable form. The methodology moved from vague intuition to articulable structure. 4 guides completed (collaboration spec writing, knowledge specification, intent reaching, document structure).</span>
                     </div>
                 </div>
 
@@ -404,8 +522,8 @@
                         v1.0 &middot; <span class="zh">规划中</span><span class="en">Planned</span>
                     </div>
                     <div class="timeline__text">
-                        <span class="zh"><strong>完整方法论 + 产品 + 商业</strong>。目标是一个完整的体系：思想清晰表达、产品可用、商业模型可验证。</span>
-                        <span class="en"><strong>Complete methodology + product + business.</strong> The goal is a complete system: clearly articulated philosophy, usable product, and validated business model.</span>
+                        <span class="zh"><strong>完整方法论 + 产品 + 商业</strong>。目标是一个完整的体系：思想清晰表达、产品可用、商业模型可验证。不只是写出来的方法论，而是让其他人也能拿来用的完整体系。</span>
+                        <span class="en"><strong>Complete methodology + product + business.</strong> The goal is a complete system: clearly articulated philosophy, usable product, and validated business model. Not just a written methodology, but a complete system others can pick up and use.</span>
                     </div>
                 </div>
             </div>
