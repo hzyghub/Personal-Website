@@ -159,6 +159,7 @@
 .project-item:hover {
   border-color: var(--accent);
   background: rgba(var(--accent-rgb), 0.02);
+  box-shadow: 0 2px 12px rgba(var(--accent-rgb), 0.08);
 }
 .project-item--core {
   border-color: var(--accent);
@@ -179,13 +180,15 @@
 .project-item__desc { font-size: 0.85rem; color: var(--text); line-height: 1.6; margin-bottom: 0.4rem; }
 .project-item__meta { font-size: 0.6rem; color: var(--text-dim); }
 .project-item__link {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--accent);
   white-space: nowrap;
   margin-left: 1rem;
-  transition: transform 250ms var(--ease-out);
+  transition: transform 250ms var(--ease-out), opacity 250ms var(--ease-out);
+  opacity: 0.7;
 }
-.project-item:hover .project-item__link { transform: translateX(4px); }
+.project-item:hover .project-item__link { transform: translateX(4px); opacity: 1; }
 
 /* Timeline */
 .timeline {
