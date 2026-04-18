@@ -4,7 +4,7 @@
 
 ## 项目概述
 
-黄朝阳（Huang Chaoyang）的个人简历/作品集网站。综合在线名片，面向HR、技术面试官、行业同行。中英双语，杂志风格多页面设计。
+黄朝阳（Huang Chaoyang）的个人数字资产和对外展示窗口。长期迭代——展示思想体系、实践项目和个人叙事，而非传统简历。面向行业人脉、设计社区和潜在合作者。中英双语，杂志风格多页面设计。
 
 ## 技术栈
 
@@ -18,7 +18,7 @@
 
 ```
 多页面应用（杂志风格）
-├── index.html          # 主页（Hero + 项目列表 + 设计过程 + 旅程 + 联系）
+├── index.html          # 主页（Hero + 项目列表 + 旅程 + 联系）
 ├── intentbridge.html   # IntentBridge 方法论旗舰页（活文档）
 ├── projects/
 │   ├── afc.html        # AFC 数据智能平台
@@ -71,7 +71,7 @@
 ### 内容约束
 - 中英双语，默认中文，右上角切换
 - 所有中文内容必须有对应英文翻译
-- 联系方式：邮箱 hzymicro@outlook.com（已确认）
+- 联系方式：邮箱 huangzhaoyang1994@gmail.com
 - 头像：使用 `assets/images/avatar.jpg`（圆形裁剪，青绿浅色边框）
 
 ### 无障碍
@@ -103,9 +103,14 @@
 
 | 术语 | 标准写法 | 说明 |
 |------|---------|------|
-| 活标准审查 | Living Standard Review | 达意项目的核心审查方法 |
+| 达意 | IntentBridge | 项目中文名，来源"辞达而已矣" |
+| 两层规格 | Two-Layer Specs | 协作规格+知识规格，缺一不可 |
+| 活标准双环审查 | Living Standard Dual-Loop Review | 内环审查案例，外环审查标准本身 |
+| 六维框架 | Six-Dim Framework | 评估协作规格质量的六个维度（0-12分） |
+| 意图触达 | Intent Reaching | 规格撰写之前的前置步骤——发现真实意图 |
+| 知识规格化 | Knowledge Specification | 把领域专家的隐性知识显性化 |
 
-> 注意：IntentBridge 不是 Spec Engineering，是人机协同的思想/哲学。
+> 注意：IntentBridge 不是 Spec Engineering，是人机协同的一种思想。
 
 ## 按任务类型的文件触发规则
 
