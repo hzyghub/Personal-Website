@@ -1,0 +1,12 @@
+# AI tools
+.claude/
+.superpowers/
+
+# Private docs (entire docs directory)
+docs/
+
+# Unused images
+assets/images/2025-7-12黄朝阳2701.jpg
+
+# AI collaboration rules
+CLAUDE.md
