@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蚂蚁金服资金预测 — 黄朝阳</title>
-    <meta name="description" content="蚂蚁金服资金预测：双周期因子模型，发现'10号效应'因子，得分 121.87。">
+    <meta name="description" content="蚂蚁金服资金预测：XGBoost+LightGBM集成，51维特征工程，收益确认延迟编码，得分 121.87。">
     <meta property="og:title" content="蚂蚁金服资金预测 — 黄朝阳">
-    <meta property="og:description" content="双周期因子模型，发现'10号效应'因子，收益确认延迟编码。得分 121.87。">
+    <meta property="og:description" content="多模型集成+特征工程，收益确认延迟编码，三数据源融合。得分 121.87。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hzyghub.github.io/Personal-Website/assets/images/avatar.jpg">
     <meta property="og:url" content="https://hzyghub.github.io/Personal-Website/projects/fund-flow.html">
@@ -69,20 +69,21 @@
                 <span class="en">Ant Financial Fund Prediction</span>
             </h1>
             <p class="caption reveal" style="margin-top: var(--sp-xs); margin-bottom: var(--sp-md);">
-                <span class="zh">用双周期因子模型捕捉资金流中的隐藏节律——发现"10号效应"</span>
-                <span class="en">Capturing hidden rhythms in fund flows with a dual-cycle factor model — discovering the "10th Effect"</span>
+                <span class="zh">余额宝资金流预测——多模型集成 + 51维特征工程</span>
+                <span class="en">Yu'e Bao fund flow prediction — multi-model ensemble with 51-dimension feature engineering</span>
             </p>
 
             <!-- Tags -->
             <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: var(--sp-md);">
-                <span class="tag tag--accent">Prophet</span>
+                <span class="tag tag--accent">XGBoost</span>
+                <span class="tag tag--accent">LightGBM</span>
+                <span class="tag tag--accent">
+                    <span class="zh">特征工程</span>
+                    <span class="en">Feature Engineering</span>
+                </span>
                 <span class="tag tag--accent">
                     <span class="zh">时间序列</span>
                     <span class="en">Time Series</span>
-                </span>
-                <span class="tag tag--accent">
-                    <span class="zh">双周期因子模型</span>
-                    <span class="en">Dual-Cycle Factor Model</span>
                 </span>
             </div>
 
@@ -110,8 +111,8 @@
                         <span class="zh">核心发现</span><span class="en">Key Finding</span>
                     </div>
                     <div class="metadata__value">
-                        <span class="zh">"10号效应"因子</span>
-                        <span class="en">"10th Effect" Factor</span>
+                        <span class="zh">收益确认延迟编码</span>
+                        <span class="en">Yield Delay Encoding</span>
                     </div>
                 </div>
             </div>
@@ -144,20 +145,16 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">构建双周期因子模型，分离月度周期和周度周期的叠加效应。结合 Prophet 进行趋势分解，手动编码收益确认延迟等业务规则特征。</span>
-                <span class="en">Built a dual-cycle factor model to separate overlapping monthly and weekly cycle effects. Combined with Prophet for trend decomposition, manually encoding business-rule features like yield confirmation delays.</span>
+                <span class="zh">主模型用 XGBoost + LightGBM 集成，基于验证集 MAE 动态分配权重。特征工程构建了 51 维特征，覆盖三类数据源：用户行为（日申购赎回汇总）、SHIBOR 银行间拆借利率、余额宝万份收益和七日年化收益率。日历特征用三角函数编码周期性，并交叉了星期×月份、星期×日期等交互项。</span>
+                <span class="en">The main model used an XGBoost + LightGBM ensemble with dynamic weight allocation based on validation MAE. Feature engineering built 51 dimensions covering three data sources: user behavior (daily aggregated purchases and redemptions), SHIBOR interbank rates, and Yu'e Bao yield rates. Calendar features used trigonometric encoding for cyclicality, with interaction terms like weekday × month and weekday × day-of-month.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">双周期因子分解模型的核心思想很直观：余额宝的资金流同时受两种周期驱动——"周几效应"（工作日购买多、周末赎回多）和"几号效应"（发薪日购买高峰）。模型把预测拆成乘法结构：预测值 = 基线水平 × 周几因子 × 几号因子。两种因子独立计算，周几因子是每个星期几的平均值除以总均值，几号因子同理。这种乘法分解比加法更能捕获周期之间的交互效应。</span>
-                <span class="en">The dual-cycle factor model's core idea is intuitive: Yu'e Bao fund flows are driven by two simultaneous cycles — the "day-of-week effect" (more purchases on workdays, more redemptions on weekends) and the "day-of-month effect" (purchase peaks on salary dates). The model decomposes predictions multiplicatively: predicted = baseline × weekday_factor × day_of_month_factor. Each factor set is computed independently as the ratio of period-average to overall-mean. Multiplicative decomposition captures interaction effects between cycles better than additive models.</span>
+                <span class="zh">资金流的周末效应很明确：周六周日的申购和赎回金额大约只有工作日的 60%。数据中还观察到每月 10 号前后的购买量偏高，可能和发薪日有关。这些周期模式是特征工程的重点——周一到周四的工作日强度各不相同，周五就开始下滑，不能用一个"是否工作日"的布尔值概括。</span>
+                <span class="en">Weekend effects in fund flows were clear: Saturday and Sunday purchase/redemption amounts were roughly 60% of weekday levels. The data also showed elevated purchase volumes around the 10th of each month, likely tied to salary payment dates. These cyclical patterns drove the feature engineering focus — each weekday from Monday to Thursday had distinct intensity levels, with Friday already declining, so a single "is_weekday" boolean couldn't capture this nuance.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">最有意思的发现是"10号效应"——在184天的历史数据中，每月10号的购买因子达到1.248，也就是比月均购买量高出24.8%。这个峰值大概率和发工资的日子有关——很多企业每月10号左右发工资，到账了就顺手转进余额宝。模型专门针对工作日10号增加了1.08-1.10倍的提升系数。</span>
-                <span class="en">The most intriguing discovery was the "10th Effect" — across 184 days of historical data, the purchase factor on the 10th of each month reached 1.248, meaning purchases were 24.8% above the monthly average. This peak likely correlates with China's salary payment cycle: many companies pay wages around the 10th, and employees transfer salary to Yu'e Bao immediately. The model applies a dedicated 1.08–1.10× boost for weekday 10ths.</span>
-            </p>
-            <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">另一个独特的特征是"收益确认延迟编码"。余额宝的收益不是即时到账的——周一套现，周三才显示收益；周五套现，要到下周二。这套延迟规则被编码为一个整数特征（2-4天不等），加上一个布尔标记（当天是否是收益确认日）。历史数据显示，购买金额与2天前的收益率相关性高达0.75——用户确实会根据收益到账预期调整行为。</span>
-                <span class="en">Another unique feature was "yield confirmation delay encoding." Yu'e Bao earnings don't arrive instantly — Monday purchases show yield on Wednesday; Friday purchases don't show until next Tuesday. This delay rule is encoded as an integer feature (2–4 days) plus a boolean flag (is today a yield confirmation day?). Historical data shows a 0.75 correlation between purchase amounts and yield rates 2 days prior — users do adjust behavior based on when they expect yield to appear.</span>
+                <span class="zh">最有价值的特征是收益确认延迟编码。余额宝的收益不是即时到账：周一转入，周三才显示收益；周五转入，要到下周二。按照赛题给出的规则，我把每天对应的延迟天数（2-4天）编码为整数特征，再标记当天是否是收益确认日。历史数据显示购买金额与 2 天前的收益率相关性达到 0.75——用户确实会根据预期收益调整申购行为。</span>
+                <span class="en">The most valuable feature was yield confirmation delay encoding. Yu'e Bao earnings don't appear instantly: Monday deposits show yield on Wednesday; Friday deposits don't show until next Tuesday. Following the competition's rules, I encoded each day's delay (2–4 days) as an integer feature, plus a boolean flag for whether it's a yield confirmation day. Historical data showed a 0.75 correlation between purchase amounts and yield rates 2 days prior — users do adjust purchasing based on expected yield.</span>
             </p>
         </div>
     </section>
@@ -182,20 +179,20 @@
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card__value stat-card__value--coral">1.248</div>
+                    <div class="stat-card__value stat-card__value--coral">51</div>
                     <div class="stat-card__label">
-                        <span class="zh">"10号效应"因子</span>
-                        <span class="en">"10th Effect" Factor</span>
+                        <span class="zh">特征维度</span>
+                        <span class="en">Feature Dimensions</span>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card__value">
-                        <span class="zh">双周期</span>
-                        <span class="en">Dual</span>
+                        <span class="zh">多模型集成</span>
+                        <span class="en">Ensemble</span>
                     </div>
                     <div class="stat-card__label">
-                        <span class="zh">因子模型架构</span>
-                        <span class="en">Cycle Factor Model</span>
+                        <span class="zh">XGBoost + LightGBM</span>
+                        <span class="en">XGBoost + LightGBM</span>
                     </div>
                 </div>
             </div>
@@ -212,20 +209,20 @@
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card__value">Prophet</div>
+                    <div class="stat-card__value">
+                        <span class="zh">三数据源</span>
+                        <span class="en">3 Sources</span>
+                    </div>
                     <div class="stat-card__label">
-                        <span class="zh">趋势分解基座</span>
-                        <span class="en">Trend Decomposition Base</span>
+                        <span class="zh">用户+利率+收益率</span>
+                        <span class="en">User+SHIBOR+Yield</span>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card__value">
-                        <span class="zh">月+周</span>
-                        <span class="en">Month+Week</span>
-                    </div>
+                    <div class="stat-card__value">0.75</div>
                     <div class="stat-card__label">
-                        <span class="zh">双重周期叠加</span>
-                        <span class="en">Dual Cycle Overlay</span>
+                        <span class="zh">收益-购买相关性</span>
+                        <span class="en">Yield-Purchase Correlation</span>
                     </div>
                 </div>
             </div>
@@ -242,12 +239,12 @@
             </h2>
             <div class="divider reveal"></div>
             <p class="caption reveal">
-                <span class="zh">这个项目最大的体会是：工具选择要看数据特性，不能迷信推荐方案。竞赛文档明确建议使用Prophet，我也写了详细的Prophet技术文档，但实战中直接对周期模式建模（双周期因子分解）比Prophet的趋势+季节性分解更有效。原因在于余额宝的数据周期性非常强、趋势变化相对平缓——Prophet擅长的变点检测在这里反而增加了不必要的复杂度。简单模型+深入的业务理解，比复杂模型+表面的数据拟合更可靠。</span>
-                <span class="en">The biggest takeaway: tool selection should match data characteristics, not follow recommendations blindly. The competition docs explicitly suggested Prophet, and I wrote detailed Prophet technical documentation, but in practice, directly modeling cycle patterns (dual-cycle factor decomposition) outperformed Prophet's trend + seasonality decomposition. The reason: Yu'e Bao data has very strong cyclicality with relatively flat trend changes — Prophet's strength in changepoint detection added unnecessary complexity here. Simple model + deep business understanding beats complex model + superficial data fitting.</span>
+                <span class="zh">这个项目最直接的体会是：数据源的广度比模型的复杂度更重要。试过好几种模型架构——双周期因子分解、Prophet 趋势分解、多模型加权集成——但拉开分差的关键不是选哪个模型，而是特征工程用了多少数据源。只用用户行为数据的模型拿了 107 分，加上 SHIBOR 利率和余额宝收益率后直接跳到 114 分。51 维特征里，收益确认延迟这类业务规则编码虽然不起眼，却是真正拉开差距的地方。</span>
+                <span class="en">The most direct lesson: data source breadth matters more than model complexity. I tried several architectures — dual-cycle factor decomposition, Prophet trend decomposition, multi-model weighted ensembles — but the key differentiator wasn't which model I chose, it was how many data sources the feature engineering incorporated. The model using only user behavior data scored 107; adding SHIBOR rates and Yu'e Bao yield data pushed it to 114. Among the 51 features, business-rule encodings like yield confirmation delay were unremarkable but genuinely differentiating.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">"10号效应"的发现也让我意识到，时间序列竞赛中领域知识的价值被严重低估。纯粹的统计方法可以找到周期，但只有理解"发薪日"这个业务场景，才能解释为什么是10号而不是15号，才能有信心把这个因子加入模型。这个经验后来也影响了我在AFC平台开发中的思路——先理解业务，再选择工具。</span>
-                <span class="en">The "10th Effect" discovery also showed me that domain knowledge is undervalued in time series competitions. Pure statistics can find cycles, but only understanding the "salary day" business context explains why it's the 10th and not the 15th, and gives confidence to include this factor in the model. This experience later influenced my approach to the AFC platform — understand the business first, then choose the tools.</span>
+                <span class="zh">另一个实际感受是周末效应的精度很重要。粗略地给周末乘一个折扣系数（比如 0.7）能拿到基础分，但工作日里周一到周五的强度各不相同，周五已经明显下滑，用三角函数编码这种连续变化比硬分界线效果好。竞赛文档建议用 Prophet，我也试了，但这个场景下余额宝数据的趋势变化平缓、周期性极强，树模型 + 手工特征反而更合适。</span>
+                <span class="en">Another practical takeaway: weekend effect precision matters. Roughly discounting weekends (e.g., ×0.7) gets baseline scores, but each weekday has distinct intensity — Friday already declines noticeably. Trigonometric encoding of these continuous changes outperforms hard boundaries. The competition docs recommended Prophet, and I tried it, but in this scenario with flat trends and extreme cyclicality, tree models + hand-crafted features were more effective.</span>
             </p>
         </div>
     </section>
