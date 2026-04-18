@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>余额宝资金流预测 — 黄朝阳</title>
-    <meta name="description" content="余额宝资金流预测：双周期因子模型，发现'10号效应'因子，得分 121.87。">
-    <meta property="og:title" content="余额宝资金流预测 — 黄朝阳">
+    <title>蚂蚁金服资金预测 — 黄朝阳</title>
+    <meta name="description" content="蚂蚁金服资金预测：双周期因子模型，发现'10号效应'因子，得分 121.87。">
+    <meta property="og:title" content="蚂蚁金服资金预测 — 黄朝阳">
     <meta property="og:description" content="双周期因子模型，发现'10号效应'因子，收益确认延迟编码。得分 121.87。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hzyghub.github.io/Personal-Website/assets/images/avatar.jpg">
     <meta property="og:url" content="https://hzyghub.github.io/Personal-Website/projects/fund-flow.html">
     <link rel="canonical" href="https://hzyghub.github.io/Personal-Website/projects/fund-flow.html">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="余额宝资金流预测 — 黄朝阳">
+    <meta name="twitter:title" content="蚂蚁金服资金预测 — 黄朝阳">
     <meta name="view-transition" content="same-origin">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/layout.css">
@@ -55,8 +55,8 @@
             </a>
             <span class="breadcrumb__sep">/</span>
             <span class="breadcrumb__current">
-                <span class="zh">余额宝资金流预测</span>
-                <span class="en">Yu'e Bao Fund Flow</span>
+                <span class="zh">蚂蚁金服资金预测</span>
+                <span class="en">Ant Financial Fund Prediction</span>
             </span>
         </nav>
     </div>
@@ -65,8 +65,8 @@
     <section class="section">
         <div class="container">
             <h1 class="h1 reveal">
-                <span class="zh">余额宝资金流预测</span>
-                <span class="en">Yu'e Bao Fund Flow Prediction</span>
+                <span class="zh">蚂蚁金服资金预测</span>
+                <span class="en">Ant Financial Fund Prediction</span>
             </h1>
             <p class="caption reveal" style="margin-top: var(--sp-xs); margin-bottom: var(--sp-md);">
                 <span class="zh">用双周期因子模型捕捉资金流中的隐藏节律——发现"10号效应"</span>
@@ -152,7 +152,7 @@
                 <span class="en">The dual-cycle factor model's core idea is intuitive: Yu'e Bao fund flows are driven by two simultaneous cycles — the "day-of-week effect" (more purchases on workdays, more redemptions on weekends) and the "day-of-month effect" (purchase peaks on salary dates). The model decomposes predictions multiplicatively: predicted = baseline × weekday_factor × day_of_month_factor. Each factor set is computed independently as the ratio of period-average to overall-mean. Multiplicative decomposition captures interaction effects between cycles better than additive models.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">
-                <span class="zh">最有意思的发现是"10号效应"——在184天的历史数据中，每月10号的购买因子达到1.248，也就是比月均购买量高出24.8%。这个峰值很可能与中国的薪资发放周期有关：很多企业在每月10号左右发工资，员工收到工资后立即转入余额宝。模型专门针对工作日10号增加了1.08-1.10倍的提升系数。</span>
+                <span class="zh">最有意思的发现是"10号效应"——在184天的历史数据中，每月10号的购买因子达到1.248，也就是比月均购买量高出24.8%。这个峰值大概率和发工资的日子有关——很多企业每月10号左右发工资，到账了就顺手转进余额宝。模型专门针对工作日10号增加了1.08-1.10倍的提升系数。</span>
                 <span class="en">The most intriguing discovery was the "10th Effect" — across 184 days of historical data, the purchase factor on the 10th of each month reached 1.248, meaning purchases were 24.8% above the monthly average. This peak likely correlates with China's salary payment cycle: many companies pay wages around the 10th, and employees transfer salary to Yu'e Bao immediately. The model applies a dedicated 1.08–1.10× boost for weekday 10ths.</span>
             </p>
             <p class="caption reveal" style="margin-top: var(--sp-sm);">

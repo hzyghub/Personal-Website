@@ -23,7 +23,7 @@
 ├── projects/
 │   ├── afc.html        # AFC 数据智能平台
 │   ├── tianchi-prediction.html  # 天池二手车预测
-│   └── fund-flow.html  # 余额宝资金流预测
+│   └── fund-flow.html  # 蚂蚁金服资金预测
 ├── css/
 │   ├── style.css       # 设计系统（变量、排版、组件）
 │   ├── layout.css      # 布局（导航、Hero、项目列表、时间线、响应式）
@@ -42,7 +42,7 @@
 ├── projects/
 │   ├── afc.html                # AFC 项目详情页
 │   ├── tianchi-prediction.html # 天池二手车预测详情页
-│   └── fund-flow.html          # 余额宝资金流预测详情页
+│   └── fund-flow.html          # 蚂蚁金服资金预测详情页
 ├── css/
 │   ├── style.css               # 设计系统（变量、排版、组件）
 │   ├── layout.css              # 布局（导航、Hero、项目列表、时间线、响应式）
