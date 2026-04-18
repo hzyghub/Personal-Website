@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> 版本：v3.0 | 最后更新：2026-04-17 | 审查触发条件：技术栈变更 / 新阶段启动 / 内容信息变更
+> 版本：v3.0 | 最后更新：2026-04-19 | 审查触发条件：技术栈变更 / 新阶段启动 / 内容信息变更
 
 ## 项目概述
 
@@ -29,7 +29,7 @@
 │   ├── layout.css      # 布局（导航、Hero、项目列表、时间线、响应式）
 │   └── animations.css  # 动画（滚动入场、视图过渡、减少动效）
 ├── js/
-│   └── main.js         # 语言切换（持久化）、导航、汉堡菜单、滚动动画
+│   └── main.js         # 语言切换（持久化）、导航、汉堡菜单、滚动动画、回到顶部
 └── assets/images/      # 头像
 ```
 
@@ -48,17 +48,22 @@
 │   ├── layout.css              # 布局（导航、Hero、项目列表、时间线、响应式）
 │   └── animations.css          # 动画（滚动入场、视图过渡、减少动效）
 ├── js/
-│   └── main.js                 # 语言切换（持久化）、导航、汉堡菜单、滚动动画
+│   └── main.js                 # 语言切换（持久化）、导航、汉堡菜单、滚动动画、回到顶部
 ├── assets/
 │   └── images/                 # 头像照片
 └── docs/
-    └── superpowers/specs/      # 设计规格文档
+    ├── multi-agent-review-framework.md  # 多角色AI审查框架（活文档）
+    └── superpowers/
+        ├── specs/              # 设计规格文档
+        └── reviews/            # 六角色审查报告
 ```
 
 ## 当前状态
 
-- 阶段：v3.0 全面重设计完成
+- 阶段：v3.0 六角色审查驱动优化完成
 - 设计文档：`docs/superpowers/specs/2026-04-17-site-v3-full-redesign.md`
+- 审查报告：`docs/superpowers/reviews/2026-04-18-six-persona-review.md`
+- 审查框架：`docs/multi-agent-review-framework.md`（活文档，v0.3）
 
 ## 关键约束
 
@@ -85,8 +90,9 @@
 - 多页面杂志风格布局（主页、IntentBridge旗舰页、项目详情页）
 - 中英双语切换（持久化到 localStorage）
 - 响应式（桌面/平板/手机）
-- 滚动入场动画 + 视图过渡
+- 滚动入场动画 + 视图过渡 + 回到顶部按钮
 - SEO meta标签 + Open Graph
+- 微装饰（timeline脉动、section-label竖线、联系区卡片化）
 
 **范围外**：
 - 博客/文章系统
@@ -136,6 +142,6 @@
 
 ### 实现要求
 - CSS 按职责分离：`style.css`（设计系统）、`layout.css`（布局）、`animations.css`（动画）
-- JS写在 `js/main.js` 中，按功能模块组织
+- JS写在 `js/main.js` 中，按功能模块组织（语言切换 / 导航 / 滚动动画 / 回到顶部）
 - HTML结构语义化，使用 `<section>` + `id` 做锚点
 - 响应式用 `@media` 断点：1200px / 768px
