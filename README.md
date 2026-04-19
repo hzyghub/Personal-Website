@@ -14,16 +14,16 @@
 
 | 板块 | 说明 |
 |------|------|
-| Hero | 核心问题：人和AI之间，怎么协作？8年地铁一线+3年AI深度协作的洞察 |
+| Hero | 核心问题：人和AI之间，怎么协作？8年轨道交通一线+3年AI深度协作的洞察 |
 | 项目展示 | AFC数据智能平台、阿里天池数据竞赛 |
 | IntentBridge 达意 | 人和AI之间怎么真正协作起来——两层规格架构、活标准双环审查、知识规格化 |
-| 旅程 | 从地铁运营一线到AI深度协作实践者的成长路径 |
+| 旅程 | 从轨道交通运营一线到AI深度协作实践者的成长路径 |
 
 ## 项目亮点
 
 ### AFC 数据智能分析平台
 
-地铁有成熟的AFC/ACC系统，但数据只是沉睡在数据库里。我在这些基础设施之上搭建了智能分析层——多源数据融合，9家LLM接入，目标是能自主跨表推理的Level 4智能体。一个人+AI，14天完成MVP。
+轨道交通有成熟的AFC/ACC系统，但数据只是沉睡在数据库里。我在这些基础设施之上搭建了智能分析层——多源数据融合，9家LLM接入，目标是能自主跨表推理的Level 4智能体。一个人+AI，14天完成MVP。
 
 ### 阿里天池数据竞赛
 
@@ -99,16 +99,16 @@ My personal digital showcase. Long-term iteration — presenting practical explo
 
 | Section | Description |
 |---------|-------------|
-| Hero | Core question: how to collaborate with AI? Insights from 8 years in metro operations + 3 years of deep AI collaboration |
+| Hero | Core question: how to collaborate with AI? Insights from 8 years in urban rail transit operations + 3 years of deep AI collaboration |
 | Projects | AFC Data Intelligence Platform, Alibaba Tianchi Competitions |
 | IntentBridge | How humans and AI can truly collaborate — two-layer spec architecture, living standard dual-loop review, knowledge specification |
-| Journey | Growth path from metro operations frontline to AI collaboration practitioner |
+| Journey | Growth path from urban rail transit operations frontline to AI collaboration practitioner |
 
 ## Highlights
 
 ### AFC Data Intelligence Platform
 
-Metro has mature AFC/ACC systems, but data just sits dormant in databases. I built an intelligent analysis layer on top of this infrastructure — multi-source data fusion, 9 LLM providers integrated, targeting a Level 4 agent with autonomous cross-table reasoning. Solo + AI, MVP in 14 days.
+Urban rail transit has mature AFC/ACC systems, but data just sits dormant in databases. I built an intelligent analysis layer on top of this infrastructure — multi-source data fusion, 9 LLM providers integrated, targeting a Level 4 agent with autonomous cross-table reasoning. Solo + AI, MVP in 14 days.
 
 ### Alibaba Tianchi Competitions
 
