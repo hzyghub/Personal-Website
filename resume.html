@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄朝阳 — 简历</title>
+    <style>
+        :root {
+            --bg: #f7f5f0;
+            --bg-card: #ffffff;
+            --accent: #2a9d8f;
+            --accent-light: #e8f5f3;
+            --accent-dark: #1f7a6e;
+            --coral: #e76f51;
+            --coral-light: #fef3f0;
+            --text: #2d3436;
+            --text-muted: #636e72;
+            --text-dim: #b2bec3;
+            --border: #e8e4de;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+            --font-serif: Georgia, serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 13px; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Language toggle */
+        .lang-zh .en, .lang-en .zh { display: none !important; }
+
+        /* Page container */
+        .resume {
+            width: 210mm;
+            max-width: 100%;
+            background: var(--bg-card);
+            padding: 2.4rem 2.8rem;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+            border-radius: 4px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        .header__left { flex: 1; }
+        .header__name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--text);
+        }
+        .lang-zh .header__name { font-family: var(--font-serif); letter-spacing: 0.15em; }
+        .header__tagline {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+        .header__right {
+            text-align: right;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .header__right a { color: var(--accent); text-decoration: none; }
+        .header__right a:hover { text-decoration: underline; }
+
+        /* Section */
+        .section { margin-bottom: 1rem; }
+        .section__title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 0.6rem;
+        }
+
+        /* Skills */
+        .skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .skill-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 3px;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .skill-tag--coral { background: var(--coral-light); color: var(--coral); }
+        .skill-tag--dim { background: #f0efeb; color: var(--text-muted); }
+
+        /* Experience / Project entries */
+        .entry { margin-bottom: 0.7rem; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.15rem;
+        }
+        .entry__title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .entry__date {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            white-space: nowrap;
+        }
+        .entry__org {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 0.15rem;
+        }
+        .entry__detail {
+            font-size: 0.8rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+        .entry__detail li {
+            margin-left: 1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        /* Highlight numbers */
+        .hl { color: var(--coral); font-weight: 600; }
+
+        /* Language toggle button */
+        .lang-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+        .lang-btn:hover { background: var(--accent); color: #fff; }
+
+        /* Print */
+        @page { size: A4; margin: 0; }
+        @media print {
+            body { padding: 0; background: #fff; }
+            .resume { box-shadow: none; border-radius: 0; padding: 2rem 2.4rem; }
+            .lang-btn { display: none; }
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            html { font-size: 12px; }
+            .resume { padding: 1.5rem; }
+            .header { flex-direction: column; gap: 0.5rem; }
+            .header__right { text-align: left; }
+        }
+    </style>
+</head>
+<body class="lang-zh">
+    <button class="lang-btn" onclick="toggleLang()">
+        <span class="zh">EN</span><span class="en">中文</span>
+    </button>
+
+    <div class="resume">
+        <!-- Header -->
+        <div class="header">
+            <div class="header__left">
+                <h1 class="header__name">
+                    <span class="zh">黄朝阳</span>
+                    <span class="en">Zhaoyang Huang</span>
+                </h1>
+                <div class="header__tagline">
+                    <span class="zh">AI 产品经理 · 8年业务运营 + 3年AI深度协作</span>
+                    <span class="en">AI Product Manager · 8 Years Business Operations + 3 Years Deep AI Collaboration</span>
+                </div>
+            </div>
+            <div class="header__right">
+                <div>huangzhaoyang1994@gmail.com</div>
+                <div><a href="https://hzyghub.github.io/Personal-Website/" target="_blank">hzyghub.github.io/Personal-Website</a></div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section__title">
+                <span class="zh">专业技能</span>
+                <span class="en">Skills</span>
+            </div>
+            <div class="skills">
+                <span class="skill-tag"><span class="zh">数据分析</span><span class="en">Data Analysis</span></span>
+                <span class="skill-tag"><span class="zh">特征工程</span><span class="en">Feature Engineering</span></span>
+                <span class="skill-tag skill-tag--coral"><span class="zh">多模型集成</span><span class="en">Multi-Model Ensemble</span></span>
+                <span class="skill-tag skill-tag--coral">Python</span>
+                <span class="skill-tag skill-tag--coral">SQL</span>
+                <span class="skill-tag skill-tag--coral">Vibe Coding</span>
+                <span class="skill-tag skill-tag--dim"><span class="zh">需求分析</span><span class="en">Requirements Analysis</span></span>
+                <span class="skill-tag skill-tag--dim"><span class="zh">数据可视化</span><span class="en">Data Visualization</span></span>
+                <span class="skill-tag skill-tag--dim">LLM / Prompt Engineering</span>
+                <span class="skill-tag skill-tag--dim">Text-to-SQL</span>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section__title">
+                <span class="zh">工作经历</span>
+                <span class="en">Experience</span>
+            </div>
+            <div class="entry">
+                <div class="entry__header">
+                    <div class="entry__title">
+                        <span class="zh">数据运营与管理</span>
+                        <span class="en">Data Operations &amp; Management</span>
+                    </div>
+                    <div class="entry__date">2018 — 2026</div>
+                </div>
+                <div class="entry__org">
+                    <span class="zh">城市轨道交通运营企业</span>
+                    <span class="en">Urban Rail Transit Operator</span>
+                </div>
+                <div class="entry__detail">
+                    <ul>
+                        <li>
+                            <span class="zh">8年数据运营，深耕 AFC/ACC 系统数据管理。深度接触票务、客流、运营全流程数据，业务分析依赖手动导出 Excel，数据价值未被释放——这是我做 AI 产品的起点。</span>
+                            <span class="en">8 years in data operations, deeply engaged with AFC/ACC system data management. Deeply engaged with ticketing, passenger flow, and operations data across all workflows. Business analysis relied on manual Excel exports, with data value untapped — this was my starting point for AI product work.</span>
+                        </li>
+                        <li>
+                            <span class="zh">2022年起深度使用AI工具，从 Excel 提效逐步深入到数据分析、特征工程、平台搭建。发现8年积累的轨道交通领域知识是AI正确执行的前提——开始系统化整理业务文档，将隐性知识转化为AI可执行的知识规格。</span>
+                            <span class="en">Starting in 2022, used AI tools extensively — progressing from Excel efficiency to data analysis, feature engineering, and platform building. Found that 8 years of accumulated rail transit domain knowledge was the prerequisite for AI to execute correctly — began systematically organizing business documents, turning tacit knowledge into AI-executable knowledge specs.</span>
+                        </li>
+                        <li>
+                            <span class="zh">积累 <span class="hl">100+</span> 专业术语定义和业务逻辑手册，覆盖票务规则、OD配对、客流分析等核心场景，为 AI 平台提供领域判断依据。</span>
+                            <span class="en">Accumulated <span class="hl">100+</span> terminology definitions and business logic manuals covering ticketing rules, OD pairing, and passenger flow analysis — providing domain judgment basis for the AI platform.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <div class="section__title">
+                <span class="zh">项目经验</span>
+                <span class="en">Projects</span>
+            </div>
+
+            <div class="entry">
+                <div class="entry__header">
+                    <div class="entry__title">AFC <span class="zh">数据智能分析平台</span><span class="en">Data Intelligence Platform</span></div>
+                    <div class="entry__date">2025 — 2026</div>
+                </div>
+                <div class="entry__detail">
+                    <ul>
+                        <li>
+                            <span class="zh"><strong>问题</strong>：某线路运营数据沉睡在数据库中，运营人员查数据靠手动导 Excel，一次跨表分析需要数小时。</span>
+                            <span class="en"><strong>Problem</strong>: a line's operational data sat dormant in databases. Staff relied on manual Excel exports — a cross-table analysis took hours.</span>
+                        </li>
+                        <li>
+                            <span class="zh"><strong>方案</strong>：在现有 AFC/ACC 基础上搭建智能分析层——自然语言查询替代手动 SQL，<span class="hl">14天</span>完成 MVP。多源数据融合（票务+客流+运营），AI 实现跨表自动关联分析。</span>
+                            <span class="en"><strong>Solution</strong>: Built an intelligent analysis layer on top of existing AFC/ACC infrastructure — natural language queries replacing manual SQL, MVP in <span class="hl">14 days</span>. Multi-source data fusion (ticketing + passenger flow + operations), AI achieving cross-table automated correlation analysis.</span>
+                        </li>
+                        <li>
+                            <span class="zh"><strong>关键决策</strong>：前期花大量时间整理领域知识（术语表、业务规则、案例库），验证了"AI执行质量的上限由领域知识质量决定"——冷启动定向成功率从 40% 提升到 95%。</span>
+                            <span class="en"><strong>Key Decision</strong>: Invested heavily upfront in domain knowledge organization (glossary, business rules, case library), validating that "AI execution quality ceiling is determined by domain knowledge quality" — cold start orientation rate improved from 40% to 95%.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry__header">
+                    <div class="entry__title">
+                        <span class="zh">阿里天池数据竞赛</span>
+                        <span class="en">Alibaba Tianchi Competitions</span>
+                    </div>
+                    <div class="entry__date">2025</div>
+                </div>
+                <div class="entry__detail">
+                    <ul>
+                        <li>
+                            <span class="zh">二手车价格预测 <span class="hl">Top 1%</span>（205/33,814），MAE 从 650 降至 486（优化 25.2%）。系统化特征工程——先扩展到 <span class="hl">163维</span> 再筛选到60维，构造品牌保值率、车龄-里程交互特征、异常价格检测标志。四种模型加权融合（LightGBM + XGBoost + CatBoost + RF），靠数据源融合和业务规则编码突围。</span>
+                            <span class="en">Used car price prediction <span class="hl">Top 1%</span> (205/33,814), MAE optimized from 650 to 486 (25.2% improvement). Systematic feature engineering — expanded to <span class="hl">163 dimensions</span> then filtered to 60, constructing brand retention rate, age-mileage interaction features, and anomalous price detection flags. Weighted ensemble of four models (LightGBM + XGBoost + CatBoost + RF), breaking through with multi-source data fusion and business rule encoding.</span>
+                        </li>
+                        <li>
+                            <span class="zh">蚂蚁金服资金流预测：51维特征工程（时间窗口统计+收益确认延迟编码+用户行为聚合），多模型集成，得分 121.87。</span>
+                            <span class="en">Ant Financial fund flow prediction: 51-dimension feature engineering (time window statistics + yield confirmation delay encoding + user behavior aggregation), multi-model ensemble, scored 121.87.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry__header">
+                    <div class="entry__title">IntentBridge <span class="zh">达意</span></div>
+                    <div class="entry__date">2026</div>
+                </div>
+                <div class="entry__detail">
+                    <ul>
+                        <li>
+                            <span class="zh">从三年 AI 协作实践中提炼的方法——解决"心里想的A，AI执行的是A''''"的意图失真问题。两层规格架构（协作规格+知识规格），已在 AFC 平台和本站建设中验证有效。4份指南已完成。</span>
+                            <span class="en">A method distilled from 3 years of AI collaboration practice — solving the "I think A, AI executes A''''" intent distortion problem. Two-layer spec architecture (collaboration + knowledge specs), validated effective in the AFC platform and this site's development. 4 guides completed.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section" style="margin-bottom: 0;">
+            <div class="section__title">
+                <span class="zh">教育背景</span>
+                <span class="en">Education</span>
+            </div>
+            <div class="entry">
+                <div class="entry__header">
+                    <div class="entry__title">
+                        <span class="zh">长安大学 · 自动化</span>
+                        <span class="en">Chang'an University · Automation</span>
+                    </div>
+                    <div class="entry__date">2013 — 2017</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLang() {
+            var body = document.body;
+            if (body.classList.contains('lang-zh')) {
+                body.classList.replace('lang-zh', 'lang-en');
+                localStorage.setItem('resume-lang', 'en');
+            } else {
+                body.classList.replace('lang-en', 'lang-zh');
+                localStorage.setItem('resume-lang', 'zh');
+            }
+        }
+        (function() {
+            var saved = localStorage.getItem('resume-lang');
+            if (saved === 'en') {
+                document.body.classList.replace('lang-zh', 'lang-en');
+            }
+        })();
+    </script>
+</body>
+</html>
